@@ -1,4 +1,6 @@
-package Modele;
+package base;
+
+import base.Creature;
 
 import java.util.ArrayList;
 

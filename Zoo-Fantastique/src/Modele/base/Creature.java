@@ -1,3 +1,5 @@
+package base;
+
 public class Creature {
     private String nomEspece;
     private char sexe;
@@ -94,5 +96,11 @@ public class Creature {
         dort = false;
         emettreSon("Je me réveille");
     }
+
+    public void vieillir() {
+        age++;
+        emettreSon("Je vieillis. Mon âge est maintenant : " + age);
+    }
+
 
 }
