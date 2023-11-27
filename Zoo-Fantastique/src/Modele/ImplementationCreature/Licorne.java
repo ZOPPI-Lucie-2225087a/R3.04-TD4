@@ -1,5 +1,6 @@
 package ImplementationCreature;
 
+import base.Creature;
 import base.Vivipare;
 import Interface.CreatureTerrestre;
 
@@ -7,6 +8,11 @@ public class Licorne extends Vivipare implements CreatureTerrestre {
 
     public Licorne(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
         super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    }
+
+    @Override
+    public Creature mettreBas() {
+        return null;
     }
 
     @Override
