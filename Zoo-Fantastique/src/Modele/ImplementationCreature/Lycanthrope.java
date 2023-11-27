@@ -11,6 +11,6 @@ public class Lycanthrope extends Vivipare implements CreatureTerrestre {
 
     @Override
     public void Courir() {
-
+        //metttre ici les carac de courses du lycantrhopes
     }
 }
