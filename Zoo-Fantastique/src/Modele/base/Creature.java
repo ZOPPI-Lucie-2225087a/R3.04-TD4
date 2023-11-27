@@ -88,19 +88,36 @@ public class Creature {
         emettreSon("Je ne suis plus malade");
     }
 
+    public void diminuerSante(int quantite) {
+        indicateurSante -= quantite;
+        if (indicateurSante <= 0) {
+            mourir("Je suis mort de maladie");
+        }
+    }
+
     public void dormir() {
         dort = true;
         emettreSon("Je m'endors");
     }
+
     public void seReveiller() {
         dort = false;
         emettreSon("Je me réveille");
     }
 
-    public void vieillir() {
+    public void vieilir() {
         age++;
-        emettreSon("Je vieillis. Mon âge est maintenant : " + age);
+        emettreSon("Je vieilis. Mon âge est maintenant : " + age);
+    
+        double probaMourir = 1 - Math.exp(-0.05 * age); //proba surment trop haute a modifier plus tard
+    
+        if (Math.random() < probaMourir) {
+            mourir("Je suis mort de vieilese");
+        }
     }
-
+    
+    public void mourir(String raison) {
+        emettreSon(raison);
+    }
 
 }

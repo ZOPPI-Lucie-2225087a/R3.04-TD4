@@ -16,6 +16,6 @@ public class Kraken extends Ovipare implements CreatureMarine {
 
     @Override
     public void Nager() {
-
+        System.out.println("Le kraken nage");
     }
 }

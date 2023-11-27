@@ -71,6 +71,15 @@ public class Enclos {
         for (Creature creature : creatures) {
             creature.manger(10);
         }
+    }   
+
+    public void entretenir() {
+        if (creatures.isEmpty() && "sale".equals(proprete)) {
+            proprete = "propre";
+            System.out.println("L'enclo a été entretenu est maintenant il est propre.");
+        } else {
+            System.out.println("L'enclo ne peut pas être entretenu car il n'est pas vide ou n'est pas sale.");
+        }
     }
 
     public void afficherDetails() {

@@ -17,6 +17,6 @@ public class Sirène extends Vivipare implements CreatureMarine {
 
     @Override
     public void Nager() {
-
+        System.out.println("La siréne nage gracieusement");
     }
 }

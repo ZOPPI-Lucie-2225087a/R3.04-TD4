@@ -16,6 +16,6 @@ public class Mégalodon extends Ovipare implements CreatureMarine {
 
     @Override
     public void Nager() {
-
+        System.out.println("Le mégalodon nage puisament !");
     }
 }

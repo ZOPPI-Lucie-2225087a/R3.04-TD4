@@ -20,4 +20,12 @@ public class Phénix extends Ovipare implements CreatureVolante {
         // Mettez ici le code pour la capacité de vol du Phénix
         System.out.println("Le Phénix vole majestueusement !");
     }
+
+    public void renaître() {
+        this.age = 0;
+        this.indicateurFaim = 100;
+        this.dort = false;
+        this.indicateurSante = 100;
+        System.out.println("La creature a renait");
+    }
 }
