@@ -2,7 +2,6 @@ package ImplementationCreature;
 
 import Interface.CreatureMarine;
 import base.Creature;
-import base.Ovipare;
 import base.Vivipare;
 
 public class Sirène extends Vivipare implements CreatureMarine {
