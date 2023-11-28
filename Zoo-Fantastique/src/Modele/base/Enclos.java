@@ -1,57 +1,20 @@
 package base;
 
-import base.Creature;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class Enclos {
     private String nom;
     private double superficie;
     private int capaciteMax;
-    private ArrayList<Creature> creatures;
+    private List<Creature> creatures;
     private String proprete;
 
-    public Enclos(String nom, double superficie, int capaciteMax) {
+    public Enclos(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete) {
         this.nom = nom;
         this.superficie = superficie;
         this.capaciteMax = capaciteMax;
-        this.creatures = new ArrayList<>();
-        this.proprete = "propre";
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public double getSuperficie() {
-        return superficie;
-    }
-
-    public void setSuperficie(double superficie) {
-        this.superficie = superficie;
-    }
-
-    public int getCapaciteMax() {
-        return capaciteMax;
-    }
-
-    public void setCapaciteMax(int capaciteMax) {
-        this.capaciteMax = capaciteMax;
-    }
-
-    public ArrayList<Creature> getCreatures() {
-        return creatures;
-    }
-
-    public String getProprete() {
-        return proprete;
-    }
-
-    public void setProprete(String proprete) {
+        this.creatures = new ArrayList<>(creatures);
         this.proprete = proprete;
     }
 
@@ -71,7 +34,7 @@ public class Enclos {
         for (Creature creature : creatures) {
             creature.manger(10);
         }
-    }   
+    }
 
     public void entretenir() {
         if (creatures.isEmpty() && "sale".equals(proprete)) {
@@ -84,7 +47,7 @@ public class Enclos {
 
     public void afficherDetails() {
         System.out.println("Nom de l'enclo: " + nom);
-        System.out.println("Superficie: " + superficie + " m2");
+        System.out.println("Superficie: " + superficie + " m²");
         System.out.println("Capacité maximale: " + capaciteMax);
         System.out.println("Nombre de créature présente: " + creatures.size());
         System.out.println("Propreté: " + proprete);
@@ -92,5 +55,45 @@ public class Enclos {
         for (Creature creature : creatures) {
             System.out.println(creature.getNomEspece() + " - Age: " + creature.getAge() + " ans");
         }
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public double getSuperficie() {
+        return superficie;
+    }
+
+    public int getCapaciteMax() {
+        return capaciteMax;
+    }
+
+    public List<Creature> getCreatures() {
+        return creatures;
+    }
+
+    public String getProprete() {
+        return proprete;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setSuperficie(double superficie) {
+        this.superficie = superficie;
+    }
+
+    public void setCapaciteMax(int capaciteMax) {
+        this.capaciteMax = capaciteMax;
+    }
+
+    public void setCreatures(ArrayList<Creature> creatures) {
+        this.creatures = creatures;
+    }
+
+    public void setProprete(String proprete) {
+        this.proprete = proprete;
     }
 }
