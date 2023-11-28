@@ -34,7 +34,7 @@ public class Enclos {
 
     public void nourrirCreatures() {
         for (Creature creature : creatures) {
-            creature.manger(10);
+            creature.manger();
         }
     }
 
@@ -47,16 +47,19 @@ public class Enclos {
         }
     }
 
-    public void afficherDetails() {
-        System.out.println("Nom de l'enclo: " + nom);
-        System.out.println("Superficie: " + superficie + " m²");
-        System.out.println("Capacité maximale: " + capaciteMax);
-        System.out.println("Nombre de créature présente: " + creatures.size());
-        System.out.println("Propreté: " + proprete);
-        System.out.println("Détail des créature:");
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nom de l'enclo: ").append(nom).append("\n");
+        sb.append("Superficie: ").append(superficie).append(" m²\n");
+        sb.append("Capacité maximale: ").append(capaciteMax).append("\n");
+        sb.append("Nombre de créature présente: ").append(creatures.size()).append("\n");
+        sb.append("Propreté: ").append(proprete).append("\n");
+        sb.append("Détail des créature:\n");
         for (Creature creature : creatures) {
-            System.out.println(creature.getNomEspece() + " - Age: " + creature.getAge() + " ans");
+            sb.append(creature.getNomEspece()).append(" - Age: ").append(creature.getAge()).append(" ans\n");
         }
+        return sb.toString();
     }
 
     public String getNom() {

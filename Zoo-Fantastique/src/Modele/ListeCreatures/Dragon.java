@@ -31,4 +31,12 @@ public class Dragon extends Ovipare implements CreatureMarine, CreatureVolante, 
     public void Voler() {
         System.out.println("Le dragon vole");
     }
+
+    public void renaître() {
+        this.setAge(0);
+        this.setIndicateurFaim(100);
+        this.setDort(false);
+        this.setIndicateurSante(100);
+        System.out.println("La créature renait");
+    }
 }

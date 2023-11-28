@@ -5,10 +5,10 @@ import java.util.List;
 import CreaturesAttributs.Creature;
 import CreaturesAttributs.CreatureVolante;
 
-public class Voliéres extends Enclos {
+public class Voliere extends Enclos {
     private int hauteur;
 
-    public Voliéres(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
+    public Voliere(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
             int hauteur) {
         super(nom, superficie, capaciteMax, creatures, proprete);
         this.hauteur = hauteur;
@@ -27,7 +27,6 @@ public class Voliéres extends Enclos {
     public void entretenir() {
         super.entretenir();
         verifierToit();
-        setProprete("BON");
         System.out.println("La volière a été entretenue et son toit vérifié.");
     }
 

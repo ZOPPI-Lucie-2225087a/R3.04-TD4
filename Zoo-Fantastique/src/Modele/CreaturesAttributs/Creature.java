@@ -106,9 +106,9 @@ public class Creature {
         this.estVivant = estVivant;
     }
 
-    public void manger(int nourriture) {
+    public void manger() {
         if (!dort) {
-            indicateurFaim += nourriture;
+            indicateurFaim += 30;
             if (indicateurFaim > 100) {
                 indicateurFaim = 100;
             }
@@ -160,6 +160,13 @@ public class Creature {
 
     public void mourir(String raison) {
         emettreSon(raison);
+    }
+
+    @Override
+    public String toString() {
+        return "Creature [nomEspece=" + nomEspece + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
+                + ", age=" + age + ", indicateurFaim=" + indicateurFaim + ", dort=" + dort + ", indicateurSante="
+                + indicateurSante + "]";
     }
 
 }

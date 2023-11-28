@@ -11,12 +11,12 @@ public class Mégalodon extends Ovipare implements CreatureMarine {
     }
 
     @Override
-    public Creature Pondre() {
-        return null;
+    public Mégalodon creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+        return new Mégalodon(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
     public void Nager() {
-        System.out.println("Le mégalodon nage puisament !");
+        System.out.println("Le mégalodon nage puissamment !");
     }
 }

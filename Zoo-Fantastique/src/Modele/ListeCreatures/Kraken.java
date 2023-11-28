@@ -11,8 +11,8 @@ public class Kraken extends Ovipare implements CreatureMarine {
     }
 
     @Override
-    public Creature Pondre() {
-        return null;
+    public Kraken creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+        return new Kraken(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
