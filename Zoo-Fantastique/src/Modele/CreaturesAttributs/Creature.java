@@ -1,4 +1,4 @@
-package Base;
+package CreaturesAttributs;
 
 public class Creature {
     private String nomEspece;
@@ -13,7 +13,7 @@ public class Creature {
     private boolean estVivant;
 
     public Creature(String nomEspece, char sexe, double poids, double taille, int age,
-                    int indicateurFaim, boolean dort, int indicateurSante) {
+            int indicateurFaim, boolean dort, int indicateurSante) {
         this.nomEspece = nomEspece;
         this.sexe = sexe;
         this.poids = poids;
@@ -23,8 +23,9 @@ public class Creature {
         this.dort = dort;
         this.indicateurSante = indicateurSante;
         this.Cri = Cri;
-        this.estVivant= true;
+        this.estVivant = true;
     }
+
     public String getNomEspece() {
         return nomEspece;
     }
@@ -68,44 +69,44 @@ public class Creature {
     public int getIndicateurFaim() {
         return indicateurFaim;
     }
-    
+
     public void setIndicateurFaim(int indicateurFaim) {
         this.indicateurFaim = indicateurFaim;
     }
-    
+
     public boolean isDort() {
         return dort;
     }
-    
+
     public void setDort(boolean dort) {
         this.dort = dort;
     }
-    
+
     public int getIndicateurSante() {
         return indicateurSante;
     }
-    
+
     public void setIndicateurSante(int indicateurSante) {
         this.indicateurSante = indicateurSante;
     }
-    
+
     public String getCri() {
         return Cri;
     }
-    
+
     public void setCri(String cri) {
         Cri = cri;
     }
-    
+
     public boolean isEstVivant() {
         return estVivant;
     }
-    
+
     public void setEstVivant(boolean estVivant) {
         this.estVivant = estVivant;
     }
 
-    public void manger(int nourriture){
+    public void manger(int nourriture) {
         if (!dort) {
             indicateurFaim += nourriture;
             if (indicateurFaim > 100) {
@@ -122,7 +123,7 @@ public class Creature {
     }
 
     public void etreSoigne() {
-        indicateurSante += 30; //a definir combien on soigne
+        indicateurSante += 30; // a definir combien on soigne
         if (indicateurSante > 100) {
             indicateurSante = 100;
         }
@@ -149,14 +150,14 @@ public class Creature {
     public void vieilir() {
         age++;
         emettreSon("Je vieilis. Mon âge est maintenant : " + age);
-    
-        double probaMourir = 1 - Math.exp(-0.05 * age); //proba surment trop haute a modifier plus tard
-    
+
+        double probaMourir = 1 - Math.exp(-0.05 * age); // proba surment trop haute a modifier plus tard
+
         if (Math.random() < probaMourir) {
             mourir("Je suis mort de vieilese");
         }
     }
-    
+
     public void mourir(String raison) {
         emettreSon(raison);
     }

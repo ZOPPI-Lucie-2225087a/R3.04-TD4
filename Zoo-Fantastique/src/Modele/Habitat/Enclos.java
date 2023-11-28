@@ -1,7 +1,9 @@
-package Base;
+package Habitat;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import CreaturesAttributs.Creature;
 
 public class Enclos {
     private String nom;

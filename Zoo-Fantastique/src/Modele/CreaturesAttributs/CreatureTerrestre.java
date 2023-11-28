@@ -1,4 +1,4 @@
-package Interface;
+package CreaturesAttributs;
 
 public interface CreatureTerrestre {
 

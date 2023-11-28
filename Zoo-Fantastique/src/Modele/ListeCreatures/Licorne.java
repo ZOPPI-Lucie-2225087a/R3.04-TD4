@@ -1,12 +1,13 @@
-package ImplementationCreature;
+package ListeCreatures;
 
-import Base.Creature;
-import Base.Vivipare;
-import Interface.CreatureTerrestre;
+import CreaturesAttributs.Creature;
+import CreaturesAttributs.CreatureTerrestre;
+import CreaturesAttributs.Vivipare;
 
 public class Licorne extends Vivipare implements CreatureTerrestre {
 
-    public Licorne(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+    public Licorne(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
         super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 

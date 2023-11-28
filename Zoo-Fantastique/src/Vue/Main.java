@@ -1,5 +1,6 @@
-import ImplementationCreature.*;
-import Base.*;
+import CreaturesAttributs.Creature;
+import Habitat.*;
+import ListeCreatures.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,11 +1,11 @@
-package Base;
+package CreaturesAttributs;
 
-import Base.Creature;
-import ImplementationCreature.Phoenix;
+import ListeCreatures.Phoenix;
 
 public abstract class Ovipare extends Creature {
 
-    public abstract Ovipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante);
+    public abstract Ovipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim,
+            boolean dort, int indicateurSante);
 
     public Ovipare(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {

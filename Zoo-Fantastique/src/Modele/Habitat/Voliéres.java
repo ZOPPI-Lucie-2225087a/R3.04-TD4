@@ -1,12 +1,15 @@
-package Base;
+package Habitat;
 
 import java.util.List;
-import Interface.CreatureVolante;
+
+import CreaturesAttributs.Creature;
+import CreaturesAttributs.CreatureVolante;
 
 public class Voliéres extends Enclos {
     private int hauteur;
 
-    public Voliéres(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete, int hauteur) {
+    public Voliéres(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
+            int hauteur) {
         super(nom, superficie, capaciteMax, creatures, proprete);
         this.hauteur = hauteur;
     }

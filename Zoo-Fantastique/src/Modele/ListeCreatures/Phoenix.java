@@ -1,16 +1,18 @@
-package ImplementationCreature;
+package ListeCreatures;
 
-import Base.Creature;
-import Base.Ovipare;
-import Interface.CreatureVolante;
+import CreaturesAttributs.Creature;
+import CreaturesAttributs.CreatureVolante;
+import CreaturesAttributs.Ovipare;
 
 public class Phoenix extends Ovipare implements CreatureVolante {
-    public Phoenix(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+    public Phoenix(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
         super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Phoenix creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+    public Phoenix creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
         return new Phoenix(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 

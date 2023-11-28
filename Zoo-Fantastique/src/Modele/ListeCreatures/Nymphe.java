@@ -1,12 +1,13 @@
-package ImplementationCreature;
+package ListeCreatures;
 
-import Base.Creature;
-import Base.Vivipare;
-import Interface.CreatureTerrestre;
+import CreaturesAttributs.Creature;
+import CreaturesAttributs.CreatureTerrestre;
+import CreaturesAttributs.Vivipare;
 
 public class Nymphe extends Vivipare implements CreatureTerrestre {
 
-    public Nymphe(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+    public Nymphe(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
         super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
@@ -19,7 +20,7 @@ public class Nymphe extends Vivipare implements CreatureTerrestre {
     public void Courir() {
         System.out.println("La nymphe court légérement");
     }
-    
+
     public void renaître() {
         this.age = 0;
         this.indicateurFaim = 100;
