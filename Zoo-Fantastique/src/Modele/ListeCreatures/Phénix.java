@@ -1,6 +1,5 @@
 package ListeCreatures;
 
-import CreaturesAttributs.Creature;
 import CreaturesAttributs.CreatureVolante;
 import CreaturesAttributs.Ovipare;
 

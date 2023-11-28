@@ -12,6 +12,12 @@ public class Lycanthrope extends Vivipare implements CreatureTerrestre {
     }
 
     @Override
+    public Lycanthrope creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
+        return new Lycanthrope("Lycanthrope", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    }
+
+    @Override
     public Creature mettreBas() {
         // ajouter spec
         return null;

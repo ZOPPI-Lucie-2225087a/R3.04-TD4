@@ -11,6 +11,12 @@ public class Sirène extends Vivipare implements CreatureMarine {
     }
 
     @Override
+    public Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
+        return new Sirène("Sirène", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    }
+
+    @Override
     public Creature mettreBas() {
         return null;
     }

@@ -12,6 +12,12 @@ public class Nymphe extends Vivipare implements CreatureTerrestre {
     }
 
     @Override
+    public Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
+        return new Nymphe("Nymphe", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    }
+
+    @Override
     public Creature mettreBas() {
         return null;
     }

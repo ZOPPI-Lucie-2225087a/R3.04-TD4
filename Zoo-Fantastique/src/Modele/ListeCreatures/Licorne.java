@@ -12,6 +12,12 @@ public class Licorne extends Vivipare implements CreatureTerrestre {
     }
 
     @Override
+    public Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+            int indicateurSante) {
+        return new Licorne("Licorne", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    }
+
+    @Override
     public Creature mettreBas() {
         return null;
     }

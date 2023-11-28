@@ -1,6 +1,5 @@
 package ListeCreatures;
 
-import CreaturesAttributs.Creature;
 import CreaturesAttributs.CreatureMarine;
 import CreaturesAttributs.CreatureTerrestre;
 import CreaturesAttributs.CreatureVolante;
