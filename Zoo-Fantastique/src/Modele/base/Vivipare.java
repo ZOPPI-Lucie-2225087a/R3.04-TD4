@@ -1,4 +1,4 @@
-package base;
+package Base;
 
 public abstract class Vivipare extends Creature {
     public Vivipare(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {

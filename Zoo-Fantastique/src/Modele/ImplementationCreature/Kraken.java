@@ -1,8 +1,8 @@
 package ImplementationCreature;
 
+import Base.Creature;
+import Base.Ovipare;
 import Interface.CreatureMarine;
-import base.Creature;
-import base.Ovipare;
 
 public class Kraken extends Ovipare implements CreatureMarine {
     public Kraken(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {

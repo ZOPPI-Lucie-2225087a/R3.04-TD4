@@ -1,4 +1,4 @@
-package base;
+package Base;
 
 public class Creature {
     private String nomEspece;
@@ -22,7 +22,7 @@ public class Creature {
         this.indicateurFaim = indicateurFaim;
         this.dort = dort;
         this.indicateurSante = indicateurSante;
-        this.Cri= Cri;
+        this.Cri = Cri;
         this.estVivant= true;
     }
     public String getNomEspece() {
@@ -65,6 +65,46 @@ public class Creature {
         this.age = age;
     }
 
+    public int getIndicateurFaim() {
+        return indicateurFaim;
+    }
+    
+    public void setIndicateurFaim(int indicateurFaim) {
+        this.indicateurFaim = indicateurFaim;
+    }
+    
+    public boolean isDort() {
+        return dort;
+    }
+    
+    public void setDort(boolean dort) {
+        this.dort = dort;
+    }
+    
+    public int getIndicateurSante() {
+        return indicateurSante;
+    }
+    
+    public void setIndicateurSante(int indicateurSante) {
+        this.indicateurSante = indicateurSante;
+    }
+    
+    public String getCri() {
+        return Cri;
+    }
+    
+    public void setCri(String cri) {
+        Cri = cri;
+    }
+    
+    public boolean isEstVivant() {
+        return estVivant;
+    }
+    
+    public void setEstVivant(boolean estVivant) {
+        this.estVivant = estVivant;
+    }
+
     public void manger(int nourriture){
         if (!dort) {
             indicateurFaim += nourriture;
@@ -76,6 +116,7 @@ public class Creature {
             emettreSon("Je ne mange pas car je dors");
         }
     }
+
     public void emettreSon(String son) {
         System.out.println(son);
     }

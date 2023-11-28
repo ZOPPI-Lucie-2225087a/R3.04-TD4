@@ -1,8 +1,8 @@
 package ImplementationCreature;
 
+import Base.Creature;
+import Base.Vivipare;
 import Interface.CreatureTerrestre;
-import base.Creature;
-import base.Vivipare;
 
 public class Nymphe extends Vivipare implements CreatureTerrestre {
 

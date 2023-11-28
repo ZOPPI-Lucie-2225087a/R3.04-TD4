@@ -1,7 +1,7 @@
 package ImplementationCreature;
 
-import base.Creature;
-import base.Vivipare;
+import Base.Creature;
+import Base.Vivipare;
 import Interface.CreatureTerrestre;
 
 public class Licorne extends Vivipare implements CreatureTerrestre {

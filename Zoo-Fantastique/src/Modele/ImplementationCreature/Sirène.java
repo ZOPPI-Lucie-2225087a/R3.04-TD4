@@ -1,9 +1,9 @@
 package ImplementationCreature;
 
+import Base.Creature;
+import Base.Ovipare;
+import Base.Vivipare;
 import Interface.CreatureMarine;
-import base.Creature;
-import base.Ovipare;
-import base.Vivipare;
 
 public class Sirène extends Vivipare implements CreatureMarine {
     public Sirène(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {

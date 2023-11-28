@@ -1,4 +1,4 @@
-package base;
+package Base;
 
 public class Voliéres extends Enclos {
     private int hauteur;

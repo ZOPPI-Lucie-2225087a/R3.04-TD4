@@ -1,10 +1,10 @@
 package ImplementationCreature;
 
+import Base.Creature;
+import Base.Ovipare;
 import Interface.CreatureMarine;
 import Interface.CreatureTerrestre;
 import Interface.CreatureVolante;
-import base.Creature;
-import base.Ovipare;
 
 public class Dragon extends Ovipare implements CreatureMarine, CreatureVolante, CreatureTerrestre {
     public Dragon(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
