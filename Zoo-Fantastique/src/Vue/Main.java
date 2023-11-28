@@ -1,6 +1,5 @@
-import CreaturesAttributs.Creature;
-import Habitat.*;
 import ListeCreatures.*;
+import CreaturesAttributs.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +8,7 @@ public class Main {
         Creature oeuf = Phoenix.Pondre();
 
         if (oeuf instanceof Phoenix) {
-            System.out.println("Un nouvel oeuf de Phoenix a été pondu !");
+            System.out.println(oeuf);
         } else {
             System.out.println("Aucun oeuf n'a été pondu.");
         }
