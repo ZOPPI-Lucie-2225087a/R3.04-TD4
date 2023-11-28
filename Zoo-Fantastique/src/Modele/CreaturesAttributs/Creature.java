@@ -26,6 +26,69 @@ public class Creature {
         this.estVivant = true;
     }
 
+    public void manger() {
+        if (!dort) {
+            indicateurFaim += 30;
+            if (indicateurFaim > 100) {
+                indicateurFaim = 100;
+            }
+            emettreSon("Je mange");
+        } else {
+            emettreSon("Je ne mange pas car je dors");
+        }
+    }
+
+    public void emettreSon(String son) {
+        System.out.println(son);
+    }
+
+    public void etreSoigne() {
+        indicateurSante += 30; // a definir combien on soigne
+        if (indicateurSante > 100) {
+            indicateurSante = 100;
+        }
+        emettreSon("Je ne suis plus malade");
+    }
+
+    public void diminuerSante(int quantite) {
+        indicateurSante -= quantite;
+        if (indicateurSante <= 0) {
+            mourir("Je suis mort de maladie");
+        }
+    }
+
+    public void dormir() {
+        dort = true;
+        emettreSon("Je m'endors");
+    }
+
+    public void seReveiller() {
+        dort = false;
+        emettreSon("Je me réveille");
+    }
+
+    public void vieilir() {
+        age++;
+        emettreSon("Je vieilis. Mon âge est maintenant : " + age);
+
+        double probaMourir = 1 - Math.exp(-0.05 * age); // proba surment trop haute a modifier plus tard
+
+        if (Math.random() < probaMourir) {
+            mourir("Je suis mort de vieilese");
+        }
+    }
+
+    public void mourir(String raison) {
+        emettreSon(raison);
+    }
+
+    @Override
+    public String toString() {
+        return "Creature [nomEspece=" + nomEspece + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
+                + ", age=" + age + ", indicateurFaim=" + indicateurFaim + ", dort=" + dort + ", indicateurSante="
+                + indicateurSante + "]";
+    }
+
     public String getNomEspece() {
         return nomEspece;
     }
@@ -104,69 +167,6 @@ public class Creature {
 
     public void setEstVivant(boolean estVivant) {
         this.estVivant = estVivant;
-    }
-
-    public void manger() {
-        if (!dort) {
-            indicateurFaim += 30;
-            if (indicateurFaim > 100) {
-                indicateurFaim = 100;
-            }
-            emettreSon("Je mange");
-        } else {
-            emettreSon("Je ne mange pas car je dors");
-        }
-    }
-
-    public void emettreSon(String son) {
-        System.out.println(son);
-    }
-
-    public void etreSoigne() {
-        indicateurSante += 30; // a definir combien on soigne
-        if (indicateurSante > 100) {
-            indicateurSante = 100;
-        }
-        emettreSon("Je ne suis plus malade");
-    }
-
-    public void diminuerSante(int quantite) {
-        indicateurSante -= quantite;
-        if (indicateurSante <= 0) {
-            mourir("Je suis mort de maladie");
-        }
-    }
-
-    public void dormir() {
-        dort = true;
-        emettreSon("Je m'endors");
-    }
-
-    public void seReveiller() {
-        dort = false;
-        emettreSon("Je me réveille");
-    }
-
-    public void vieilir() {
-        age++;
-        emettreSon("Je vieilis. Mon âge est maintenant : " + age);
-
-        double probaMourir = 1 - Math.exp(-0.05 * age); // proba surment trop haute a modifier plus tard
-
-        if (Math.random() < probaMourir) {
-            mourir("Je suis mort de vieilese");
-        }
-    }
-
-    public void mourir(String raison) {
-        emettreSon(raison);
-    }
-
-    @Override
-    public String toString() {
-        return "Creature [nomEspece=" + nomEspece + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
-                + ", age=" + age + ", indicateurFaim=" + indicateurFaim + ", dort=" + dort + ", indicateurSante="
-                + indicateurSante + "]";
     }
 
 }
