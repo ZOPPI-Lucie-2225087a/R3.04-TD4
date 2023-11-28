@@ -22,10 +22,10 @@ public class Nymphe extends Vivipare implements CreatureTerrestre {
     }
 
     public void renaître() {
-        this.age = 0;
-        this.indicateurFaim = 100;
-        this.dort = false;
-        this.indicateurSante = 100;
-        System.out.println("La créature a renaît !");
+        this.setAge(0);
+        this.setIndicateurFaim(100);
+        this.setDort(false);
+        this.setIndicateurSante(100);
+        System.out.println("La créature renait");
     }
 }
