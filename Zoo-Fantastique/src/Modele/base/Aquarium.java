@@ -7,7 +7,8 @@ public class Aquarium extends Enclos {
     private double profondeur;
     private double salinite;
 
-    public Aquarium(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete, double profondeur, double salinite) {
+    public Aquarium(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
+            double profondeur, double salinite) {
         super(nom, superficie, capaciteMax, creatures, proprete);
         this.profondeur = profondeur;
         this.salinite = salinite;
@@ -16,11 +17,11 @@ public class Aquarium extends Enclos {
     @Override
     public void entretenir() {
         super.entretenir();
-        verifierQualiteEau(); 
+        verifierQualiteEau();
         System.out.println("L'aquarium a éter entretenu, avec vérification de la qualité de l'eau.");
     }
 
-    private void verifierQualiteEau() { 
+    private void verifierQualiteEau() {
         System.out.println("La qualité de l'eau a éter vérifié : profondeur et salinité sont bonnes.");
     }
 
