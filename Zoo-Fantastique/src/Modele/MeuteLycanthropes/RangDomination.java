@@ -26,4 +26,13 @@ public enum RangDomination {
     PSI("ψ"),
     OMEGA("ω");
 
+    private final String symbol;
+
+    RangDomination(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return this.symbol;
+    }
 }
