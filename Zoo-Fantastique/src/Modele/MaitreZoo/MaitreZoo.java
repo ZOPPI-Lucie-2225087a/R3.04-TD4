@@ -14,47 +14,31 @@ public class MaitreZoo {
         this.age = age;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public char getSexe() {
-        return sexe;
-    }
-    
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setSexe(char sexe) {
-        this.sexe = sexe;
-    }
-
     public void examinerEnclos(Enclos enclos) {
-        System.out.println(enclos.toString());
+        System.out.println("Examen de l'enclos : " + enclos.getNom());
+        System.out.println(enclos); // ça marchera surment pas faut le modifier plus tard 
     }
 
     public void nettoyerEnclos(Enclos enclos) {
-        enclos.entretenir();
+        enclos.setProprete("BON");
+        System.out.println("L'enclos " + enclos.getNom() + " a été nettoyé.");
     }
 
     public void nourrirCreatures(Enclos enclos) {
         for (Creature creature : enclos.getCreatures()) {
             creature.manger();
         }
+        System.out.println("Les créatures de l'enclos " + enclos.getNom() + " ont été nourries.");
     }
 
     public void transfererCreature(Creature creature, Enclos enclosSource, Enclos enclosDestination) {
-        enclosSource.enleverCreature(creature);
-        enclosDestination.ajouterCreature(creature);
+        if (enclosSource.getCreatures().contains(creature) && enclosDestination.getNombreCreatures() < enclosDestination.getCapaciteMax()) {
+            enclosSource.enleverCreature(creature);
+            enclosDestination.ajouterCreature(creature);
+            System.out.println("La créature a été transférée de " + enclosSource.getNom() + " à " + enclosDestination.getNom() + ".");
+        } else {
+            System.out.println("Le transfert de la créature n'est pas possible.");
+        }
     }
 }
 
