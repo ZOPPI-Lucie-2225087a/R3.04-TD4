@@ -2,11 +2,12 @@ package Habitat;
 
 import java.util.List;
 
-import CreaturesAttributs.Creature;
+import Base.Creature;
+import Base.Enclos;
 
-public class Terrestre extends Enclos {
+public class Standard extends Enclos {
 
-    public Terrestre(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete) {
+    public Standard(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete) {
         super(nom, superficie, capaciteMax, creatures, proprete);
     }
 

@@ -2,7 +2,8 @@ package Habitat;
 
 import java.util.List;
 
-import CreaturesAttributs.Creature;
+import Base.Creature;
+import Base.Enclos;
 import Interface.CreatureVolante;
 
 public class Voliere extends Enclos {

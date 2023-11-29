@@ -2,7 +2,8 @@ package Habitat;
 
 import java.util.List;
 
-import CreaturesAttributs.Creature;
+import Base.Creature;
+import Base.Enclos;
 import Interface.CreatureMarine;
 
 public class Aquarium extends Enclos {
@@ -20,11 +21,11 @@ public class Aquarium extends Enclos {
     public void entretenir() {
         super.entretenir();
         verifierQualiteEau();
-        System.out.println("L'aquarium a éter entretenu, avec vérification de la qualité de l'eau.");
+        System.out.println("L'aquarium a été traité, avec vérification de la qualité de l'eau.");
     }
 
     private void verifierQualiteEau() {
-        System.out.println("La qualité de l'eau a éter vérifié : profondeur et salinité sont bonnes.");
+        System.out.println("La qualité de l'eau a été vérifiée : la profondeur et la salinité sont bonnes.");
     }
 
     @Override

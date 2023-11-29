@@ -1,6 +1,6 @@
 package ListeCreatures;
 
-import CreaturesAttributs.Creature;
+import Base.Creature;
 import Interface.CreatureTerrestre;
 import CreaturesAttributs.Vivipare;
 

@@ -1,7 +1,7 @@
 package MaitreZoo;
 
-import CreaturesAttributs.Creature;
-import Habitat.Enclos;
+import Base.Creature;
+import Base.Enclos;
 
 public class MaitreZoo {
     private String nom;

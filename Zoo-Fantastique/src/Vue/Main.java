@@ -2,12 +2,10 @@ import ListeCreatures.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 import Habitat.Aquarium;
-import Habitat.Terrestre;
+import Habitat.Standard;
 import Habitat.Voliere;
-import MaitreZoo.MaitreZoo;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,11 +18,11 @@ public class Main {
         Phénix Lion_de_cendre = new Phénix("Lion de cendre", 'M', 10.0, 2.0, 5, 100, false, 100);
         Dragon Dracaufeu = new Dragon("Dracaufeu", 'M', 30.0, 2.0, 5, 100, false, 100);
 
-        Terrestre enclosLicornes = new Terrestre("Enclos Licornes", 100, 10, new ArrayList<>(Arrays.asList(Popcorne)),
+        Standard enclosLicornes = new Standard("Enclos Licornes", 100, 10, new ArrayList<>(Arrays.asList(Popcorne)),
                 "propre");
-        Terrestre enclosLycanthropes = new Terrestre("Enclos Lycanthropes", 100, 10,
+        Standard enclosLycanthropes = new Standard("Enclos Lycanthropes", 100, 10,
                 new ArrayList<>(Arrays.asList(Graou)), "propre");
-        Terrestre enclosNymphes = new Terrestre("Enclos Nymphes", 100, 10, new ArrayList<>(Arrays.asList(Muse)),
+        Standard enclosNymphes = new Standard("Enclos Nymphes", 100, 10, new ArrayList<>(Arrays.asList(Muse)),
                 "propre");
 
         Aquarium enclosKrakens = new Aquarium("Enclos Krakens", 100, 10, new ArrayList<>(Arrays.asList(Kraquant)),

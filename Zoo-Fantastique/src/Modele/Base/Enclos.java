@@ -1,9 +1,9 @@
-package Habitat;
+package Base;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import CreaturesAttributs.Creature;
+import Base.Creature;
 
 public class Enclos {
     private String nom;
@@ -41,9 +41,9 @@ public class Enclos {
     public void entretenir() {
         if (creatures.isEmpty() && "sale".equals(proprete)) {
             proprete = "propre";
-            System.out.println("L'enclo a été entretenu est maintenant il est propre.");
+            System.out.println("L'enclos a été entretenu, il est désormais propre.");
         } else {
-            System.out.println("L'enclo ne peut pas être entretenu car il n'est pas vide ou n'est pas sale.");
+            System.out.println("L'enclos ne peut pas être entretenu car il n'est pas vide ou n'est pas sale.");
         }
     }
 

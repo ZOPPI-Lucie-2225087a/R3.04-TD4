@@ -1,4 +1,4 @@
-package CreaturesAttributs;
+package Base;
 
 public class Creature {
     private String nomEspece;
@@ -69,12 +69,12 @@ public class Creature {
 
     public void vieilir() {
         age++;
-        emettreSon("Je vieilis. Mon âge est maintenant : " + age);
+        emettreSon("Je vieillis. Mon âge est maintenant : " + age);
 
         double probaMourir = 1 - Math.exp(-0.05 * age); // proba surment trop haute a modifier plus tard
 
         if (Math.random() < probaMourir) {
-            mourir("Je suis mort de vieilese");
+            mourir("Je suis mort de vieillesse");
         }
     }
 

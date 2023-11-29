@@ -1,5 +1,7 @@
 package CreaturesAttributs;
 
+import Base.Creature;
+
 import java.util.Scanner;
 
 public abstract class Ovipare extends Creature {

@@ -1,5 +1,7 @@
 package CreaturesAttributs;
 
+import Base.Creature;
+
 public abstract class Vivipare extends Creature {
 
     public abstract Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim,
