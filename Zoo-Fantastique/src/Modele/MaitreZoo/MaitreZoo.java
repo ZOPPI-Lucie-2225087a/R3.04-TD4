@@ -16,7 +16,7 @@ public class MaitreZoo {
 
     public void examinerEnclos(Enclos enclos) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        System.out.println(enclos); // ça marchera surment pas faut le modifier plus tard 
+        System.out.println(enclos.getNom()); // ça marchera surment pas faut le modifier plus tard 
     }
 
     public void nettoyerEnclos(Enclos enclos) {
