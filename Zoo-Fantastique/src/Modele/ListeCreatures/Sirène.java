@@ -1,7 +1,7 @@
 package ListeCreatures;
 
 import CreaturesAttributs.Creature;
-import CreaturesAttributs.CreatureMarine;
+import Interface.CreatureMarine;
 import CreaturesAttributs.Vivipare;
 
 public class Sirène extends Vivipare implements CreatureMarine {

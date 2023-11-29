@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import CreaturesAttributs.*;
 import Habitat.Aquarium;
-import Habitat.Enclos;
 import Habitat.Terrestre;
 import Habitat.Voliere;
+import MaitreZoo.MaitreZoo;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,42 +39,6 @@ public class Main {
         Voliere enclosDragons = new Voliere("Enclos Dragons", 100, 10, new ArrayList<>(Arrays.asList(Dracaufeu)),
                 "propre", 20);
 
-        MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
 
-        Scanner scanner = new Scanner(System.in);
-        int choix;
-
-        do {
-            System.out.println("1. Examiner un enclos");
-            System.out.println("2. Nettoyer un enclos");
-            System.out.println("3. Nourrir les créatures d'un enclos");
-            System.out.println("4. Transférer une créature d'un enclos à un autre");
-            System.out.println("5. Quitter");
-            System.out.print("Choisissez une option : ");
-            choix = scanner.nextInt();
-
-            switch (choix) {
-                case 1:
-                    maitreZoo.examinerEnclos(/*jsp*/);
-                    break;
-                case 2:
-                    maitreZoo.nettoyerEnclos(/*jsp*/);
-                    break;
-                case 3:
-                    maitreZoo.nourrirCreatures(/*jsp*/);
-                    break;
-                case 4:
-                    // Vous devez ajouter le code pour gérer le transfert d'une créature
-                    break;
-                case 5:
-                    System.out.println("Au revoir !");
-                    break;
-                default:
-                    System.out.println("Option non reconnue. Veuillez choisir une option valide.");
-                    break;
-            }
-        } while (choix != 5);
-
-        scanner.close();
     }
 }

@@ -1,7 +1,7 @@
 package ListeCreatures;
 
 import CreaturesAttributs.Creature;
-import CreaturesAttributs.CreatureTerrestre;
+import Interface.CreatureTerrestre;
 import CreaturesAttributs.Vivipare;
 
 public class Lycanthrope extends Vivipare implements CreatureTerrestre {

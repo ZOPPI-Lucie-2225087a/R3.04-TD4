@@ -1,6 +1,6 @@
 package ListeCreatures;
 
-import CreaturesAttributs.CreatureMarine;
+import Interface.CreatureMarine;
 import CreaturesAttributs.Ovipare;
 
 public class Kraken extends Ovipare implements CreatureMarine {

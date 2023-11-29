@@ -1,6 +1,6 @@
 package ListeCreatures;
 
-import CreaturesAttributs.CreatureMarine;
+import Interface.CreatureMarine;
 import CreaturesAttributs.Ovipare;
 
 public class Mégalodon extends Ovipare implements CreatureMarine {

@@ -12,7 +12,7 @@ public abstract class Vivipare extends Creature {
 
     public Creature mettreBas() {
         if (this.getSexe() == 'F') {
-            return creerNouveau('M', this.getPoids(), this.getTaille(), 0, 100, false, 100);
+            return creerNouveau('M', this.getPoids(), this.getTaille(), 0, 100, false, 100); //gros bebe garcon
         } else {
             System.out.println("Ne peut pas mettre bas car c'est un mâle.");
             return null;

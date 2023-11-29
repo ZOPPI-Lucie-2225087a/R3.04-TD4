@@ -1,6 +1,6 @@
 package ListeCreatures;
 
-import CreaturesAttributs.CreatureVolante;
+import Interface.CreatureVolante;
 import CreaturesAttributs.Ovipare;
 
 public class Phénix extends Ovipare implements CreatureVolante {

@@ -1,8 +1,8 @@
 package ListeCreatures;
 
-import CreaturesAttributs.CreatureMarine;
-import CreaturesAttributs.CreatureTerrestre;
-import CreaturesAttributs.CreatureVolante;
+import Interface.CreatureMarine;
+import Interface.CreatureTerrestre;
+import Interface.CreatureVolante;
 import CreaturesAttributs.Ovipare;
 
 public class Dragon extends Ovipare implements CreatureMarine, CreatureVolante, CreatureTerrestre {

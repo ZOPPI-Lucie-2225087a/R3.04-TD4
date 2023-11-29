@@ -3,7 +3,7 @@ package Habitat;
 import java.util.List;
 
 import CreaturesAttributs.Creature;
-import CreaturesAttributs.CreatureMarine;
+import Interface.CreatureMarine;
 
 public class Aquarium extends Enclos {
     private double profondeur;

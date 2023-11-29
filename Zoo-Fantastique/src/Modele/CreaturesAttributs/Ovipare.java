@@ -17,7 +17,7 @@ public abstract class Ovipare extends Creature {
             Scanner scanner = new Scanner(System.in);
             System.out.println(this.getNomEspece() + " a pondu un nouvel oeuf. Comment voulez-vous nommer le bébé ?");
             String nomBebe = scanner.nextLine();
-            Ovipare bebe = creerNouveau('M', this.getPoids(), this.getTaille(), 0, 100, false, 100);
+            Ovipare bebe = creerNouveau('M', this.getPoids(), this.getTaille(), 0, 100, false, 100); //wtf le gros bébé garçon
             bebe.setNomEspece(nomBebe);
             System.out.println("Le bébé s'appelle maintenant " + bebe.getNomEspece());
             scanner.close();

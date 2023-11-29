@@ -3,7 +3,7 @@ package Habitat;
 import java.util.List;
 
 import CreaturesAttributs.Creature;
-import CreaturesAttributs.CreatureVolante;
+import Interface.CreatureVolante;
 
 public class Voliere extends Enclos {
     private int hauteur;
