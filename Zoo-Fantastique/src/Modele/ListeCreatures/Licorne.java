@@ -6,15 +6,15 @@ import CreaturesAttributs.Vivipare;
 
 public class Licorne extends Vivipare implements CreatureTerrestre {
 
-    public Licorne(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Licorne(String nomEspece, String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Licorne creerNouveau(String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        return new Licorne("Licorne", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        return new Licorne(this.getNomEspece(),"bébé", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override

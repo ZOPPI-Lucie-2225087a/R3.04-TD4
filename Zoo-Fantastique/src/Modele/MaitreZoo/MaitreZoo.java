@@ -14,13 +14,37 @@ public class MaitreZoo {
         this.age = age;
     }
 
+    public String getNom() {
+        return nom;
+    }
+    
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    public char getSexe() {
+        return sexe;
+    }
+    
+    public void setSexe(char sexe) {
+        this.sexe = sexe;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void examinerEnclos(Enclos enclos) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        System.out.println(enclos); // ça marchera surment pas faut le modifier plus tard 
+        System.out.println(enclos.toString());
     }
 
     public void nettoyerEnclos(Enclos enclos) {
-        enclos.setProprete("BON");
+        enclos.setProprete("propre");
         System.out.println("L'enclos " + enclos.getNom() + " a été nettoyé.");
     }
 
@@ -40,6 +64,7 @@ public class MaitreZoo {
             System.out.println("Le transfert de la créature n'est pas possible.");
         }
     }
+
 }
 
 

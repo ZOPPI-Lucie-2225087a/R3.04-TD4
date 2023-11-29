@@ -4,14 +4,14 @@ import Interface.CreatureMarine;
 import CreaturesAttributs.Ovipare;
 
 public class Kraken extends Ovipare implements CreatureMarine {
-    public Kraken(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Kraken(String nomEspece, String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Kraken creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
-        return new Kraken(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    public Kraken creerNouveau(String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+        return new Kraken(this.getNomEspece(), "bébé", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override

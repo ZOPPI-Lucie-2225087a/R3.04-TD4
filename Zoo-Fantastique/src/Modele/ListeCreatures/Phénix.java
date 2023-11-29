@@ -4,15 +4,15 @@ import Interface.CreatureVolante;
 import CreaturesAttributs.Ovipare;
 
 public class Phénix extends Ovipare implements CreatureVolante {
-    public Phénix(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Phénix(String nomEspece, String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Phénix creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Phénix creerNouveau(String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        return new Phénix(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        return new Phénix(this.getNomEspece(), "bébé", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override

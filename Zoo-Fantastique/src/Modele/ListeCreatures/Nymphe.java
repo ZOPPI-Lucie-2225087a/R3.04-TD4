@@ -6,15 +6,15 @@ import CreaturesAttributs.Vivipare;
 
 public class Nymphe extends Vivipare implements CreatureTerrestre {
 
-    public Nymphe(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Nymphe(String nomEspece, String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Vivipare creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Nymphe creerNouveau(String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        return new Nymphe("Nymphe", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        return new Nymphe(this.getNomEspece(),"bébé", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override

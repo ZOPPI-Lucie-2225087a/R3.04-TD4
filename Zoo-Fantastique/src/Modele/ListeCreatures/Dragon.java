@@ -6,14 +6,14 @@ import Interface.CreatureVolante;
 import CreaturesAttributs.Ovipare;
 
 public class Dragon extends Ovipare implements CreatureMarine, CreatureVolante, CreatureTerrestre {
-    public Dragon(String nomEspece, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
+    public Dragon(String nomEspece, String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort,
             int indicateurSante) {
-        super(nomEspece, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+        super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override
-    public Dragon creerNouveau(char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
-        return new Dragon(this.getNomEspece(), sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
+    public Dragon creerNouveau(String nom, char sexe, double poids, double taille, int age, int indicateurFaim, boolean dort, int indicateurSante) {
+        return new Dragon(this.getNomEspece(), "bébé", sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
     @Override

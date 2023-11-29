@@ -2,6 +2,7 @@ package Base;
 
 public class Creature {
     private String nomEspece;
+    private String nom;
     private char sexe;
     private double poids;
     private double taille;
@@ -12,9 +13,10 @@ public class Creature {
     private String Cri;
     private boolean estVivant;
 
-    public Creature(String nomEspece, char sexe, double poids, double taille, int age,
+    public Creature(String nomEspece, String nom, char sexe, double poids, double taille, int age,
             int indicateurFaim, boolean dort, int indicateurSante) {
         this.nomEspece = nomEspece;
+        this.nom = nom;
         this.sexe = sexe;
         this.poids = poids;
         this.taille = taille;
@@ -84,7 +86,7 @@ public class Creature {
 
     @Override
     public String toString() {
-        return "Creature [nomEspece=" + nomEspece + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
+        return "Creature [nomEspece=" + nomEspece + "nom=" + nom + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
                 + ", age=" + age + ", indicateurFaim=" + indicateurFaim + ", dort=" + dort + ", indicateurSante="
                 + indicateurSante + "]";
     }
@@ -95,6 +97,14 @@ public class Creature {
 
     public void setNomEspece(String nomEspece) {
         this.nomEspece = nomEspece;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public char getSexe() {
