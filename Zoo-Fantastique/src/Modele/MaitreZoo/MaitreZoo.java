@@ -17,23 +17,23 @@ public class MaitreZoo {
     public String getNom() {
         return nom;
     }
-    
+
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+
     public char getSexe() {
         return sexe;
     }
-    
+
     public void setSexe(char sexe) {
         this.sexe = sexe;
     }
-    
+
     public int getAge() {
         return age;
     }
-    
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -56,10 +56,24 @@ public class MaitreZoo {
     }
 
     public void transfererCreature(Creature creature, Enclos enclosSource, Enclos enclosDestination) {
-        if (enclosSource.getCreatures().contains(creature) && enclosDestination.getNombreCreatures() < enclosDestination.getCapaciteMax()) {
+        if (creature == null) {
+            System.out.println("La créature est null.");
+            return;
+        }
+        if (enclosSource == null) {
+            System.out.println("L'enclos source est null.");
+            return;
+        }
+        if (enclosDestination == null) {
+            System.out.println("L'enclos de destination est null.");
+            return;
+        }
+        if (enclosSource.getCreatures().contains(creature)
+                && enclosDestination.getNombreCreatures() < enclosDestination.getCapaciteMax()) {
             enclosSource.enleverCreature(creature);
             enclosDestination.ajouterCreature(creature);
-            System.out.println("La créature a été transférée de " + enclosSource.getNom() + " à " + enclosDestination.getNom() + ".");
+            System.out.println("La créature a été transférée de " + enclosSource.getNom() + " à "
+                    + enclosDestination.getNom() + ".");
         } else {
             System.out.println("Le transfert de la créature n'est pas possible.");
         }
@@ -67,44 +81,44 @@ public class MaitreZoo {
 
 }
 
-
 /*
-MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
-
-        Scanner scanner = new Scanner(System.in);
-        int choix;
-
-        do {
-            System.out.println("1. Examiner un enclos");
-            System.out.println("2. Nettoyer un enclos");
-            System.out.println("3. Nourrir les créatures d'un enclos");
-            System.out.println("4. Transférer une créature d'un enclos à un autre");
-            System.out.println("5. Quitter");
-            System.out.print("Choisissez une option : ");
-            choix = scanner.nextInt();
-
-            switch (choix) {
-                case 1:
-                    maitreZoo.examinerEnclos();
-        break;
-        case 2:
-        maitreZoo.nettoyerEnclos();
-        break;
-        case 3:
-        maitreZoo.nourrirCreatures();
-        break;
-        case 4:
-        // Vous devez ajouter le code pour gérer le transfert d'une créature
-        break;
-        case 5:
-        System.out.println("Au revoir !");
-        break;
-default:
-        System.out.println("Option non reconnue. Veuillez choisir une option valide.");
-        break;
-        }
-        } while (choix != 5);
-
-        scanner.close();
-        }
+ * MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
+ * 
+ * Scanner scanner = new Scanner(System.in);
+ * int choix;
+ * 
+ * do {
+ * System.out.println("1. Examiner un enclos");
+ * System.out.println("2. Nettoyer un enclos");
+ * System.out.println("3. Nourrir les créatures d'un enclos");
+ * System.out.println("4. Transférer une créature d'un enclos à un autre");
+ * System.out.println("5. Quitter");
+ * System.out.print("Choisissez une option : ");
+ * choix = scanner.nextInt();
+ * 
+ * switch (choix) {
+ * case 1:
+ * maitreZoo.examinerEnclos();
+ * break;
+ * case 2:
+ * maitreZoo.nettoyerEnclos();
+ * break;
+ * case 3:
+ * maitreZoo.nourrirCreatures();
+ * break;
+ * case 4:
+ * // Vous devez ajouter le code pour gérer le transfert d'une créature
+ * break;
+ * case 5:
+ * System.out.println("Au revoir !");
+ * break;
+ * default:
+ * System.out.println("Option non reconnue. Veuillez choisir une option valide."
+ * );
+ * break;
+ * }
+ * } while (choix != 5);
+ * 
+ * scanner.close();
+ * }
  */

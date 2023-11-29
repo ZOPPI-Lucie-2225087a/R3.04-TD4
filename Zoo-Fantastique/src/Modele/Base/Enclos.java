@@ -56,7 +56,7 @@ public class Enclos {
         sb.append("Propreté: ").append(proprete).append("\n");
         sb.append("Détail des créature:\n");
         for (Creature creature : creatures) {
-            sb.append(creature.getNomEspece()).append(" - Age: ").append(creature.getAge()).append(" ans\n");
+            sb.append(creature.getNom()).append(" - Age: ").append(creature.getAge()).append(" ans\n");
         }
         return sb.toString();
     }
