@@ -2,7 +2,6 @@ package Base;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import Base.Creature;
 
 public class Enclos {
@@ -80,6 +79,10 @@ public class Enclos {
 
     public String getProprete() {
         return proprete;
+    }
+    
+    public int getNombreCreatures() {
+        return creatures.size();
     }
 
     public void setNom(String nom) {
