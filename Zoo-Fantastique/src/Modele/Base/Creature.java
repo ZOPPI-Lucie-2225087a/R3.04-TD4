@@ -86,9 +86,17 @@ public class Creature {
 
     @Override
     public String toString() {
-        return "Creature [nomEspece=" + nomEspece + "nom=" + nom + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille
-                + ", age=" + age + ", indicateurFaim=" + indicateurFaim + ", dort=" + dort + ", indicateurSante="
-                + indicateurSante + "]";
+        return "Creature {\n" +
+                "\tnomEspece: " + nomEspece + ",\n" +
+                "\tnom: " + nom + ",\n" +
+                "\tsexe: " + sexe + ",\n" +
+                "\tpoids: " + poids + ",\n" +
+                "\ttaille: " + taille + ",\n" +
+                "\tage: " + age + ",\n" +
+                "\tindicateurFaim: " + indicateurFaim + ",\n" +
+                "\tdort: " + dort + ",\n" +
+                "\tindicateurSante: " + indicateurSante + "\n" +
+                "\t}";
     }
 
     public String getNomEspece() {

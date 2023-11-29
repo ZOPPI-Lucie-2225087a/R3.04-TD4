@@ -145,7 +145,8 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.print("Entrez le nom de l'enclos dont vous voulez nourrir les créatures parmis la liste suivante : ");
+                    System.out.print(
+                            "Entrez le nom de l'enclos dont vous voulez nourrir les créatures parmis la liste suivante : ");
                     afficherNomsEnclos();
                     String nomEnclosNourrir = scanner.next();
                     Enclos enclosNourrir = trouverEnclosParNom(nomEnclosNourrir);
@@ -167,18 +168,20 @@ public class Menu {
                         System.out.print("Entrez le type de l'enclos de destination : ");
                         String typeEnclosDestination = scanner.next();
                         if (enclosDisponibles.contains(typeEnclosDestination)) {
-                            Enclos enclosDestination = trouverEnclosParEspeceEtType(creatureTransferer.getNomEspece(),
-                                    typeEnclosDestination);
+                            String nomEnclos = typeEnclosDestination.toLowerCase() + creatureTransferer.getNomEspece();
+                            Enclos enclosDestination = trouverEnclosParNom(nomEnclos);
                             if (enclosDestination == null) {
+                        
                                 if (typeEnclosDestination.equals("Voliere")) {
-                                    enclosDestination = new Voliere(("voliere"+creatureTransferer.getNomEspece()), 100, 10, 
-                                    new ArrayList<>(), "propre", 20);
+                                    enclosDestination = new Voliere(("voliere" + creatureTransferer.getNomEspece()),
+                                            100, 10, new ArrayList<>(), "propre", 20);
                                 } else if (typeEnclosDestination.equals("Standard")) {
-                                    enclosDestination = new Standard(("enclosStandard"+creatureTransferer.getNomEspece()), 100, 10, 
-                                    new ArrayList<>(), "propre");
+                                    enclosDestination = new Standard(
+                                            ("enclosStandard" + creatureTransferer.getNomEspece()), 100, 10,
+                                            new ArrayList<>(), "propre");
                                 } else if (typeEnclosDestination.equals("Aquarium")) {
-                                    enclosDestination = new Aquarium(("aquarium"+creatureTransferer.getNomEspece()), 100, 10, 
-                                    new ArrayList<>(), "propre", 200, 1.0);
+                                    enclosDestination = new Aquarium(("aquarium" + creatureTransferer.getNomEspece()),
+                                            100, 10, new ArrayList<>(), "propre", 200, 1.0);
                                 }
                                 listeDesEnclos.add(enclosDestination);
                             }
