@@ -2,7 +2,6 @@ package Base;
 
 import java.util.ArrayList;
 import java.util.List;
-import Base.Creature;
 
 public class Enclos {
     private String nom;
