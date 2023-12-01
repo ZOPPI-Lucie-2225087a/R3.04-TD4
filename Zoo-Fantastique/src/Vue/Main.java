@@ -3,8 +3,12 @@ import ListeCreatures.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import Base.Enclos;
+import Base.SimulerEnclos;
 import Controleur.MaitreZoo.Menu;
 import Habitat.*;
 import MaitreZoo.*;
@@ -20,24 +24,29 @@ public class Main {
                 Phénix Lion_de_cendre = new Phénix("Phénix", "Lion_de_cendre", 'M', 10.0, 2.0, 5, 100, false, 100);
                 Dragon Dracaufeu = new Dragon("Dragon", "Dracaufeu", 'M', 30.0, 2.0, 5, 100, false, 100);
 
-                Standard enclosLicornes = new Standard("enclosStandardLicorne", 100, 10, new ArrayList<>(Arrays.asList(Popcorne)),
-                                "propre");
+                Standard enclosLicornes = new Standard("enclosStandardLicorne", 100, 10,
+                                new ArrayList<>(Arrays.asList(Popcorne)),
+                                100.0);
                 Standard enclosLycanthropes = new Standard("enclosStandardLycanthrope", 100, 10,
-                                new ArrayList<>(Arrays.asList(Graou)), "propre");
-                Standard enclosNymphes = new Standard("enclosStandardNymphe", 100, 10, new ArrayList<>(Arrays.asList(Muse)),
-                                "propre");
+                                new ArrayList<>(Arrays.asList(Graou)), 100.0);
+                Standard enclosNymphes = new Standard("enclosStandardNymphe", 100, 10,
+                                new ArrayList<>(Arrays.asList(Muse)),
+                                100.0);
 
-                Aquarium enclosKrakens = new Aquarium("aquariumKraken", 100, 10, new ArrayList<>(Arrays.asList(Kraquant)),
-                                "propre", 3000, 1.0);
+                Aquarium enclosKrakens = new Aquarium("aquariumKraken", 100, 10,
+                                new ArrayList<>(Arrays.asList(Kraquant)),
+                                100.0, 3000, 1.0);
                 Aquarium enclosSirenes = new Aquarium("aquariumSirene", 100, 10, new ArrayList<>(Arrays.asList(Ariel)),
-                                "propre", 200, 1.0);
-                Aquarium enclosMegalodons = new Aquarium("aquariumMegalodon", 100, 10, new ArrayList<>(Arrays.asList(Megalo)),
-                                "propre", 20, 1.0);
+                                100.0, 200, 1.0);
+                Aquarium enclosMegalodons = new Aquarium("aquariumMegalodon", 100, 10,
+                                new ArrayList<>(Arrays.asList(Megalo)),
+                                100.0, 20, 1.0);
 
-                Voliere enclosPhenix = new Voliere("volierePhenix", 100, 10, new ArrayList<>(Arrays.asList(Lion_de_cendre)),
-                                "propre", 20);
+                Voliere enclosPhenix = new Voliere("volierePhenix", 100, 10,
+                                new ArrayList<>(Arrays.asList(Lion_de_cendre)),
+                                100.0, 20);
                 Voliere enclosDragons = new Voliere("voliereDragon", 100, 10, new ArrayList<>(Arrays.asList(Dracaufeu)),
-                                "propre", 20);
+                                100.0, 20);
 
                 List<Enclos> listeDesEnclos = new ArrayList<>();
                 listeDesEnclos.add(enclosLicornes);
@@ -55,16 +64,26 @@ public class Main {
 
                 List<Thread> threads = new ArrayList<>();
                 for (Enclos enclos : listeDesEnclos) {
-                    //Thread thread = new Thread(new SimulerEnclos(enclos));
-                    //threads.add(thread);
-                    //thread.start();
+                        Thread thread = new Thread(new SimulerEnclos(enclos));
+                        threads.add(thread);
+                        thread.start();
                 }
+
+                ScheduledExecutorService executor = Executors.newScheduledThreadPool(listeDesEnclos.size());
+                for (Enclos enclos : listeDesEnclos) {
+                        executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.MINUTES);
+                }
+
                 for (Thread thread : threads) {
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                                thread.join();
+                        } catch (InterruptedException e) {
+                                e.printStackTrace();
+                        }
+                }
+
+                executor.shutdown();
+                while (!executor.isTerminated()) {
                 }
         }
 }

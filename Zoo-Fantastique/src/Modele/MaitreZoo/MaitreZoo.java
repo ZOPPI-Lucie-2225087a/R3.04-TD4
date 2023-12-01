@@ -45,7 +45,7 @@ public class MaitreZoo {
     }
 
     public void nettoyerEnclos(Enclos enclos) {
-        enclos.setProprete("propre");
+        enclos.setProprete(100.0);
         System.out.println("L'enclos " + enclos.getNom() + " a été nettoyé.");
     }
 
