@@ -1,4 +1,4 @@
-package MaitreZoo;
+package Controleur.MaitreZoo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import Habitat.*;
 import Interface.CreatureMarine;
 import Interface.CreatureTerrestre;
 import Interface.CreatureVolante;
+import MaitreZoo.MaitreZoo;
 
 public class Menu {
     private MaitreZoo maitreZoo;
