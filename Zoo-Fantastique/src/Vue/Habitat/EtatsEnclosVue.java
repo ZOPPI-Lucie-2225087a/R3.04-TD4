@@ -15,9 +15,28 @@ public class EtatsEnclosVue {
     "│░░░░░░░░│░░░└──┘░░│\n" + 
     "│░░│░░░░░│░░░░░░░░░│\n" +
     "│░░│░░░░░░░░░░░░░░░│\n" +
+    "└──────────────────┘";
+    
+    private static final String ENCLOSSTANDARDPLEIN_STRING = //Enclos Standars avec animaux et propre
+    
+    "┌──────────────────┐\n" +
+    "│░░░░┌─┐░0░░░┌──┐░░│\n" +
+    "│░│░░│░│░░░░░└──┘░░│\n" +
+    "│░│░░└┬┘░░│░░░0░░░░│\n" +
+    "│░░0░░│░░░░░░░░░░░░│\n" +
+    "│░░░░░░░░░░0░░░░░░░│\n" +
+    "│░░░┌┐░░┌─┐░░┌──┐░░│\n" +
+    "│░░░└┘░░└┬┘░░│░░│░░│\n" +
+    "│░░0░░░░░│░░░└──┘░░│\n" + 
+    "│░░│░░░░░│░░░░░░░░░│\n" +
+    "│░░│░░░░░░░░░░0░░░░│\n" +
     "└──────────────────┘";    
 
-    public static String getEnclosGraphic() {
+    public static String getEnclosStandardGraphic() {
         return ENCLOSSTANDARD_STRING;
+    }
+
+    public static String getEnclosStandardPleinGraphic() {
+        return ENCLOSSTANDARDPLEIN_STRING;
     }
 }
