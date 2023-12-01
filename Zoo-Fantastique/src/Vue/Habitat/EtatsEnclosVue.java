@@ -32,6 +32,8 @@ public class EtatsEnclosVue {
     "│░░│░░░░░░░░░░0░░░░│\n" +
     "└──────────────────┘";    
 
+
+    // a refaire en mieux
     public static String getEnclosStandardGraphic() {
         return ENCLOSSTANDARD_STRING;
     }

@@ -41,7 +41,7 @@ public class MaitreZoo {
 
     public void examinerEnclos(Enclos enclos) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        System.out.println(EtatsEnclosVue.getEnclosGraphic());
+        System.out.println(EtatsEnclosVue.getEnclosStandardGraphic()); // a changer avec le EtasEnclos.java
     }
 
     public void nettoyerEnclos(Enclos enclos) {
