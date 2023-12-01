@@ -8,9 +8,9 @@ public class Enclos {
     private double superficie;
     private int capaciteMax;
     private List<Creature> creatures;
-    private String proprete;
+    protected double proprete;
 
-    public Enclos(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete) {
+    public Enclos(String nom, double superficie, int capaciteMax, List<Creature> creatures, double proprete) {
         this.nom = nom;
         this.superficie = superficie;
         this.capaciteMax = capaciteMax;
@@ -18,6 +18,13 @@ public class Enclos {
         this.proprete = proprete;
     }
 
+    public void afficherDetails() {
+        System.out.println("Nom : " + this.getNom());
+        System.out.println("Superficie : " + this.getSuperficie());
+        System.out.println("Nombre de créatures : " + this.getCreatures().size());
+        System.out.println("Propreté : " + this.getProprete()+"%");
+    }
+    
     public void ajouterCreature(Creature creature) {
         if (creatures.size() < capaciteMax) {
             creatures.add(creature);
@@ -37,11 +44,11 @@ public class Enclos {
     }
 
     public void entretenir() {
-        if (creatures.isEmpty() && "sale".equals(proprete)) {
-            proprete = "propre";
+        if (creatures.isEmpty() && proprete < 50.0) {
+            proprete = 100.0;
             System.out.println("L'enclos a été entretenu, il est désormais propre.");
         } else {
-            System.out.println("L'enclos ne peut pas être entretenu car il n'est pas vide ou n'est pas sale.");
+            System.out.println("L'enclos ne peut pas être entretenu car il n'est pas vide ou n'est pas assez sale.");
         }
     }
 
@@ -76,8 +83,8 @@ public class Enclos {
         return creatures;
     }
 
-    public String getProprete() {
-        return proprete;
+    public double getProprete() {
+        return this.proprete;
     }
     
     public int getNombreCreatures() {
@@ -100,7 +107,7 @@ public class Enclos {
         this.creatures = creatures;
     }
 
-    public void setProprete(String proprete) {
+    public void setProprete(double proprete) {
         this.proprete = proprete;
     }
 }

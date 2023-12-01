@@ -8,11 +8,14 @@ import Interface.CreatureVolante;
 
 public class Voliere extends Enclos {
     private int hauteur;
+    private double Toit;
 
-    public Voliere(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
+    public Voliere(String nom, double superficie, int capaciteMax, List<Creature> creatures, double proprete,
             int hauteur) {
         super(nom, superficie, capaciteMax, creatures, proprete);
         this.hauteur = hauteur;
+        this.Toit = 100.0;
+        this.proprete = 100.0;
     }
 
     @Override
@@ -41,5 +44,21 @@ public class Voliere extends Enclos {
 
     public void setHauteur(int hauteur) {
         this.hauteur = hauteur;
+    }
+
+    public double getToit() {
+        return Toit;
+    }
+
+    public void setToit(double Toit) {
+        this.Toit = Toit;
+    }
+
+    public double getPropreteVoliere() {
+        return this.proprete;
+    }
+
+    public void setPropreteVoliere(double proprete) {
+        super.setProprete(proprete);
     }
 }

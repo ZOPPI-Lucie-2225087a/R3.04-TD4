@@ -10,11 +10,12 @@ public class Aquarium extends Enclos {
     private double profondeur;
     private double salinite;
 
-    public Aquarium(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete,
+    public Aquarium(String nom, double superficie, int capaciteMax, List<Creature> creatures, double proprete,
             double profondeur, double salinite) {
         super(nom, superficie, capaciteMax, creatures, proprete);
         this.profondeur = profondeur;
-        this.salinite = salinite;
+        this.salinite = 100.0;
+        this.proprete = 100.0;
     }
 
     @Override
@@ -51,5 +52,13 @@ public class Aquarium extends Enclos {
 
     public void setSalinite(double salinite) {
         this.salinite = salinite;
+    }
+
+    public double getPropreteAquarium() {
+        return this.proprete;
+    }
+
+    public void setPropreteAquarium(double proprete) {
+        super.setProprete(proprete);
     }
 }

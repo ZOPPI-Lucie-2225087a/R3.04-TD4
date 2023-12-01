@@ -6,9 +6,11 @@ import Base.Creature;
 import Base.Enclos;
 
 public class Standard extends Enclos {
+    private double proprete;
 
-    public Standard(String nom, double superficie, int capaciteMax, List<Creature> creatures, String proprete) {
+    public Standard(String nom, double superficie, int capaciteMax, List<Creature> creatures, double proprete) {
         super(nom, superficie, capaciteMax, creatures, proprete);
+        this.proprete = 100.0;
     }
 
     @Override
@@ -20,5 +22,13 @@ public class Standard extends Enclos {
     @Override
     public void ajouterCreature(Creature creature) {
         super.ajouterCreature(creature);
+    }
+
+    public double getPropreteStandard() {
+        return this.proprete;
+    }
+
+    public void setPropreteStandard(double proprete) {
+        super.setProprete(proprete);
     }
 }
