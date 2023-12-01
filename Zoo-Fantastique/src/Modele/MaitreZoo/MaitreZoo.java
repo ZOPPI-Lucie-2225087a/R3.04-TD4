@@ -2,6 +2,7 @@ package MaitreZoo;
 
 import Base.Creature;
 import Base.Enclos;
+import Habitat.EtatsEnclosVue;
 
 public class MaitreZoo {
     private String nom;
@@ -40,7 +41,7 @@ public class MaitreZoo {
 
     public void examinerEnclos(Enclos enclos) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        System.out.println(enclos.toString());
+        System.out.println(EtatsEnclosVue.getEnclosGraphic());
     }
 
     public void nettoyerEnclos(Enclos enclos) {
