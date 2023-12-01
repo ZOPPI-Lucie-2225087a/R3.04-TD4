@@ -13,6 +13,9 @@ public class Creature {
     private String Cri;
     private boolean estVivant;
 
+    private static final double B = Math.log(2) / 10;
+    private static final double A = 0.1 / Math.exp(B * 60);
+    
     public Creature(String nomEspece, String nom, char sexe, double poids, double taille, int age,
             int indicateurFaim, boolean dort, int indicateurSante) {
         this.nomEspece = nomEspece;
@@ -45,7 +48,7 @@ public class Creature {
     }
 
     public void etreSoigne() {
-        indicateurSante += 30; // a definir combien on soigne
+        indicateurSante += 30;
         if (indicateurSante > 100) {
             indicateurSante = 100;
         }
@@ -73,7 +76,7 @@ public class Creature {
         age++;
         emettreSon("Je vieillis. Mon âge est maintenant : " + age);
 
-        double probaMourir = 1 - Math.exp(-0.05 * age); // proba surment trop haute a modifier plus tard
+        double probaMourir = A * Math.exp(B * age);
 
         if (Math.random() < probaMourir) {
             mourir("Je suis mort de vieillesse");
