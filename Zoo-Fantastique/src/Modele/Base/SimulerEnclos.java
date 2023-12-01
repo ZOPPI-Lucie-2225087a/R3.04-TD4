@@ -21,15 +21,27 @@ public class SimulerEnclos implements Runnable {
     private void modifierEtatAleatoire(Enclos enclos) {
 
         if (random.nextBoolean()) {
-            enclos.setProprete(random.nextDouble() * 100);
+            double nouvelleProprete = enclos.getProprete() - (random.nextDouble() * 25);
+            if (nouvelleProprete < 0) {
+                nouvelleProprete = 0;
+            }
+            enclos.setProprete(nouvelleProprete);
         }
 
         if (enclos instanceof Aquarium && random.nextBoolean()) {
-            ((Aquarium) enclos).setSalinite(random.nextInt(100));
+            double nouvelleSalinite = ((Aquarium) enclos).getSalinite() - (random.nextDouble() * 25);
+            if (nouvelleSalinite < 0) {
+                nouvelleSalinite = 0;
+            }
+            ((Aquarium) enclos).setSalinite(nouvelleSalinite);
         }
 
         if (enclos instanceof Voliere && random.nextBoolean()) {
-            ((Voliere) enclos).setToit(random.nextDouble() * 100);
+            double nouveauToit = ((Voliere) enclos).getToit() - (random.nextDouble() * 25);
+            if (nouveauToit < 0) {
+                nouveauToit = 0;
+            }
+            ((Voliere) enclos).setToit(nouveauToit);
         }
     }
 }
