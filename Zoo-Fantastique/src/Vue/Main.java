@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Base.Enclos;
+import Controleur.MaitreZoo.Menu;
 import Habitat.*;
 import MaitreZoo.*;
 
