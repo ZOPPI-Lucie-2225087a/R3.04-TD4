@@ -53,5 +53,18 @@ public class Main {
                 Menu menu = new Menu(maitreZoo, listeDesEnclos);
                 menu.afficherMenu();
 
+                List<Thread> threads = new ArrayList<>();
+                for (Enclos enclos : listeDesEnclos) {
+                    //Thread thread = new Thread(new SimulerEnclos(enclos));
+                    //threads.add(thread);
+                    //thread.start();
+                }
+                for (Thread thread : threads) {
+                    try {
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
         }
 }
