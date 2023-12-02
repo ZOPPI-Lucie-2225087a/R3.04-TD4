@@ -26,6 +26,7 @@ public class SimulerEnclos implements Runnable {
                 nouvelleProprete = 0;
             }
             enclos.setProprete(nouvelleProprete);
+            System.out.println("Proprete of enclos " + enclos + " changed to: " + nouvelleProprete);
         }
 
         if (enclos instanceof Aquarium && random.nextBoolean()) {
@@ -34,6 +35,7 @@ public class SimulerEnclos implements Runnable {
                 nouvelleSalinite = 0;
             }
             ((Aquarium) enclos).setSalinite(nouvelleSalinite);
+            System.out.println("Salinite of aquarium " + enclos + " changed to: " + nouvelleSalinite);
         }
 
         if (enclos instanceof Voliere && random.nextBoolean()) {
@@ -42,6 +44,7 @@ public class SimulerEnclos implements Runnable {
                 nouveauToit = 0;
             }
             ((Voliere) enclos).setToit(nouveauToit);
+            System.out.println("Toit of voliere " + enclos + " changed to: " + nouveauToit);
         }
     }
 }
