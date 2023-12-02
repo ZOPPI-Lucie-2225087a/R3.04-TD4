@@ -71,7 +71,7 @@ public class Main {
 
                 ScheduledExecutorService executor = Executors.newScheduledThreadPool(listeDesEnclos.size());
                 for (Enclos enclos : listeDesEnclos) {
-                        executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.MINUTES);
+                    executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
                 }
 
                 for (Thread thread : threads) {
