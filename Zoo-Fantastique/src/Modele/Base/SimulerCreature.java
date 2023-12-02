@@ -16,16 +16,22 @@ public class SimulerCreature implements Runnable {
         modifierEtatAleatoire(creature);
     }
 
-    private void modifierEtatAleatoire(Creature creature) {
+private void modifierEtatAleatoire(Creature creature) {
 
-        if (random.nextBoolean()) {
-            creature.vieilir();
-            System.out.println("Age of creature " + creature.getNom() + " changed to: " + creature.getAge());
-        }
-
-        if (random.nextBoolean()) {
-            creature.manger();
-            System.out.println("Faim of creature " + creature.getNom() + " changed to: " + creature.getIndicateurFaim());
-        }
+    if (random.nextBoolean()) {
+        creature.vieilir();
+        System.out.println("Age of creature " + creature.getNom() + " changed to: " + creature.getAge());
     }
+
+    if (random.nextBoolean() && creature.getIndicateurFaim() < 100) {
+        int augmentationFaim = random.nextInt(25);
+        creature.setIndicateurFaim(Math.min(creature.getIndicateurFaim() + augmentationFaim, 100));
+        System.out.println("Faim of creature " + creature.getNom() + " changed to: " + creature.getIndicateurFaim());
+    }
+
+    if (random.nextBoolean()) {
+        creature.diminuerSante(random.nextInt(10));
+        System.out.println("Sante of creature " + creature.getNom() + " changed to: " + creature.getIndicateurSante());
+    }
+}
 }
