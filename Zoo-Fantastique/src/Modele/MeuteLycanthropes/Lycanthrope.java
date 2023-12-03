@@ -47,7 +47,7 @@ public class Lycanthrope {
     }
 
     public void entendreHurler() {
-        System.out.println("J'entends des hurlements");
+        System.out.println("J'entends des hurlements"); // a changer selon hurlment
     }
 
     public void seTransformerEnHumain() {
@@ -97,5 +97,13 @@ public class Lycanthrope {
     public void hurler() {
         Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque cri marche 
         hurlement.hurler(hurlement);
+    }
+
+    public void setRangDomination(RangDomination rangDomination) {
+        this.rangDomination = rangDomination;
+    }
+    
+    public RangDomination getRangDomination() {
+        return this.rangDomination;
     }
 }
