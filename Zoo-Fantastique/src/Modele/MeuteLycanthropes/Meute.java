@@ -1,6 +1,8 @@
 package MeuteLycanthropes;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Meute {
     private ArrayList<Lycanthrope> lycanthropes;
@@ -20,16 +22,37 @@ public class Meute {
     }
 
     public void ajouterLycanthrope(Lycanthrope lycanthrope) {
-        if(!this.lycanthropes.contains(lycanthrope)) {
+        if (!this.lycanthropes.contains(lycanthrope)) {
             this.lycanthropes.add(lycanthrope);
             System.out.println(lycanthrope.getNom() + " a été ajouté à la meute");
+            Lycanthrope loupOmega = Collections.min(this.lycanthropes,
+                    Comparator.comparing(Lycanthrope::getRangDomination));
+            loupOmega.setRangDomination(RangDomination.OMEGA);
         }
     }
 
     public void retirerLycanthrope(Lycanthrope lycanthrope) {
-        if(this.lycanthropes.contains(lycanthrope)) {
+        if (this.lycanthropes.contains(lycanthrope) && this.lycanthropes.size() > 3) {
             this.lycanthropes.remove(lycanthrope);
             System.out.println(lycanthrope.getNom() + " a été retiré de la meute");
+            if (lycanthrope.getRangDomination() == RangDomination.OMEGA) {
+                Lycanthrope loupOmega = Collections.min(this.lycanthropes,
+                        Comparator.comparing(Lycanthrope::getRangDomination));
+                loupOmega.setRangDomination(RangDomination.OMEGA);
+            }
+        } else {
+            System.out.println(
+                    "Impossible de retirer " + lycanthrope.getNom() + " car la meute doit contenir au moins 3 loups.");
+        }
+    }
+
+    public void retirerLycanthropeinferieura3(Lycanthrope lycanthrope) {
+        if (this.lycanthropes.contains(lycanthrope) && this.lycanthropes.size() > 3) {
+            this.lycanthropes.remove(lycanthrope);
+            System.out.println(lycanthrope.getNom() + " a été retiré de la meute");
+        } else {
+            System.out.println(
+                    "Impossible de retirer " + lycanthrope.getNom() + " car la meute doit contenir au moins 3 loups.");
         }
     }
 
