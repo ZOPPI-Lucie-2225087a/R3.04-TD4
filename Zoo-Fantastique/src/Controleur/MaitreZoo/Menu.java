@@ -29,18 +29,19 @@ public class Menu {
         }
     }
 
-    public void afficherEnclosVidesEtSales() {
+    public boolean afficherEnclosVidesEtSales() {
         boolean enclosVideEtSaleTrouve = false;
         for (Enclos enclos : listeDesEnclos) {
             if (enclos.getNombreCreatures() == 0 && enclos.getProprete() < 50) {
                 System.out.println(enclos);
                 enclosVideEtSaleTrouve = true;
+                return true;
             }
         }
-    
         if (!enclosVideEtSaleTrouve) {
             System.out.println("Aucun enclos n'a besoin ou ne peut être nettoyé.");
         }
+        return false;
     }
 
     public Enclos trouverEnclosParNumero(int numero) {
@@ -151,8 +152,8 @@ public class Menu {
                     break;
 
                 case 2:
+                    if (afficherEnclosVidesEtSales())
                     System.out.print("Entrez le nom de l'enclos à nettoyer parmis la liste suivante : ");
-                    afficherNomsEnclos();
                     int numeroEnclosNettoyer = scanner.nextInt();
                     Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
                     if (enclosNettoyer != null) {
