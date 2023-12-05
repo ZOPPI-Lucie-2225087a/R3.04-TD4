@@ -21,30 +21,33 @@ public class SimulerEnclos implements Runnable {
     private void modifierEtatAleatoire(Enclos enclos) {
 
         if (random.nextBoolean()) {
-            double nouvelleProprete = enclos.getProprete() - (random.nextDouble() * 25);
-            if (nouvelleProprete < 0) {
-                nouvelleProprete = 0;
+            if (enclos.getCreatures().size() > 0) {
+                double nouvelleProprete = enclos.getProprete() - (random.nextDouble() * 25);
+                if (nouvelleProprete < 0) {
+                    nouvelleProprete = 0;
+                }
+                enclos.setProprete(nouvelleProprete);
             }
-            enclos.setProprete(nouvelleProprete);
-            System.out.println("Proprete of enclos " + enclos + " changed to: " + nouvelleProprete);
         }
 
         if (enclos instanceof Aquarium && random.nextBoolean()) {
-            double nouvelleSalinite = ((Aquarium) enclos).getSalinite() - (random.nextDouble() * 25);
-            if (nouvelleSalinite < 0) {
-                nouvelleSalinite = 0;
+            if (enclos.getCreatures().size() > 0) {
+                double nouvelleSalinite = ((Aquarium) enclos).getSalinite() - (random.nextDouble() * 25);
+                if (nouvelleSalinite < 0) {
+                    nouvelleSalinite = 0;
+                }
+                ((Aquarium) enclos).setSalinite(nouvelleSalinite);
             }
-            ((Aquarium) enclos).setSalinite(nouvelleSalinite);
-            System.out.println("Salinite of aquarium " + enclos + " changed to: " + nouvelleSalinite);
         }
 
         if (enclos instanceof Voliere && random.nextBoolean()) {
-            double nouveauToit = ((Voliere) enclos).getToit() - (random.nextDouble() * 25);
-            if (nouveauToit < 0) {
-                nouveauToit = 0;
+            if (enclos.getCreatures().size() > 0) {
+                double nouveauToit = ((Voliere) enclos).getToit() - (random.nextDouble() * 25);
+                if (nouveauToit < 0) {
+                    nouveauToit = 0;
+                }
+                ((Voliere) enclos).setToit(nouveauToit);
             }
-            ((Voliere) enclos).setToit(nouveauToit);
-            System.out.println("Toit of voliere " + enclos + " changed to: " + nouveauToit);
         }
     }
 }

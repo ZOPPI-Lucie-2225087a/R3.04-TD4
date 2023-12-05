@@ -7,7 +7,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import Base.Creature;
 import Base.Enclos;
+import Base.SimulerCreature;
 import Base.SimulerEnclos;
 import Controleur.MaitreZoo.Menu;
 import Habitat.*;
@@ -36,13 +38,13 @@ public class Main {
                 Aquarium enclosKrakens = new Aquarium("aquariumKraken", 100, 10,
                                 new ArrayList<>(Arrays.asList(Kraquant)),
                                 100.0, 3000, 1.0);
-                Aquarium enclosSirenes = new Aquarium("aquariumSirene", 100, 10, new ArrayList<>(Arrays.asList(Ariel)),
+                Aquarium enclosSirenes = new Aquarium("aquariumSirène", 100, 10, new ArrayList<>(Arrays.asList(Ariel)),
                                 100.0, 200, 1.0);
-                Aquarium enclosMegalodons = new Aquarium("aquariumMegalodon", 100, 10,
+                Aquarium enclosMegalodons = new Aquarium("aquariumMégalodon", 100, 10,
                                 new ArrayList<>(Arrays.asList(Megalo)),
                                 100.0, 20, 1.0);
 
-                Voliere enclosPhenix = new Voliere("volierePhenix", 100, 10,
+                Voliere enclosPhenix = new Voliere("volierePhénix", 100, 10,
                                 new ArrayList<>(Arrays.asList(Lion_de_cendre)),
                                 100.0, 20);
                 Voliere enclosDragons = new Voliere("voliereDragon", 100, 10, new ArrayList<>(Arrays.asList(Dracaufeu)),
@@ -60,30 +62,15 @@ public class Main {
 
                 MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
                 Menu menu = new Menu(maitreZoo, listeDesEnclos);
+                demarrerSimulation(listeDesEnclos);
                 menu.afficherMenu();
 
-                List<Thread> threads = new ArrayList<>();
-                for (Enclos enclos : listeDesEnclos) {
-                        Thread thread = new Thread(new SimulerEnclos(enclos));
-                        threads.add(thread);
-                        thread.start();
-                }
+        }
 
+        public static void demarrerSimulation(List<Enclos> listeDesEnclos) {
                 ScheduledExecutorService executor = Executors.newScheduledThreadPool(listeDesEnclos.size());
                 for (Enclos enclos : listeDesEnclos) {
-                    executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
-                }
-
-                for (Thread thread : threads) {
-                        try {
-                                thread.join();
-                        } catch (InterruptedException e) {
-                                e.printStackTrace();
-                        }
-                }
-
-                executor.shutdown();
-                while (!executor.isTerminated()) {
+                        executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
                 }
         }
 }

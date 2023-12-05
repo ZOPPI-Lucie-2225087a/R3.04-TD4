@@ -24,11 +24,13 @@ public class Menu {
     }
 
     public void afficherNomsEnclos() {
-        System.out.print("Enclos disponibles : ");
-        for (Enclos enclos : listeDesEnclos) {
-            System.out.print(enclos.getNom() + " | ");
+        for (int i = 0; i < listeDesEnclos.size(); i++) {
+            System.out.println((i + 1) + ". " + listeDesEnclos.get(i).getNom());
         }
-        System.out.println();
+    }
+
+    public Enclos trouverEnclosParNumero(int numero) {
+        return listeDesEnclos.get(numero - 1);
     }
 
     public void afficherNomsCreatures() {
@@ -122,17 +124,17 @@ public class Menu {
 
             switch (choix) {
                 case 1:
-                System.out.print("Entrez le nom de l'enclos à examiner parmis la liste suivante : ");
-                afficherNomsEnclos();
-                String nomEnclosExaminer = scanner.next();
-                Enclos enclosExaminer = trouverEnclosParNom(nomEnclosExaminer);
-                if (enclosExaminer != null) {
-                    maitreZoo.examinerEnclos(enclosExaminer);
-                    enclosExaminer.afficherDetails(); 
-                } else {
-                    System.out.println("Aucun enclos trouvé avec ce nom.");
-                }
-                break;
+                    System.out.print("Entrez le numéro de l'enclos à examiner parmi la liste suivante : \n");
+                    afficherNomsEnclos();
+                    int numeroEnclosExaminer = scanner.nextInt();
+                    Enclos enclosExaminer = trouverEnclosParNumero(numeroEnclosExaminer);
+                    if (enclosExaminer != null) {
+                        maitreZoo.examinerEnclos(enclosExaminer);
+                        System.out.println(enclosExaminer.toString());
+                    } else {
+                        System.out.println("Aucun enclos trouvé avec ce nom.");
+                    }
+                    break;
 
                 case 2:
                     System.out.print("Entrez le nom de l'enclos à nettoyer parmis la liste suivante : ");
@@ -173,7 +175,7 @@ public class Menu {
                             String nomEnclos = typeEnclosDestination.toLowerCase() + creatureTransferer.getNomEspece();
                             Enclos enclosDestination = trouverEnclosParNom(nomEnclos);
                             if (enclosDestination == null) {
-                        
+
                                 if (typeEnclosDestination.equals("Voliere")) {
                                     enclosDestination = new Voliere(("voliere" + creatureTransferer.getNomEspece()),
                                             100, 10, new ArrayList<>(), 100.0, 20);

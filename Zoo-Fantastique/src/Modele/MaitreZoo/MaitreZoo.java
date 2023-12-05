@@ -41,12 +41,16 @@ public class MaitreZoo {
 
     public void examinerEnclos(Enclos enclos) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        System.out.println(EtatsEnclosVue.getEnclosStandardGraphic()); // a changer avec le EtasEnclos.java
+        if (enclos.getNombreCreatures() == enclos.getCapaciteMax()) {
+            System.out.println(EtatsEnclosVue.getEnclosStandardPleinGraphic());
+        } else {
+            System.out.println(EtatsEnclosVue.getEnclosStandardGraphic());
+        }
     }
 
     public void nettoyerEnclos(Enclos enclos) {
         enclos.setProprete(100.0);
-        System.out.println("L'enclos " + enclos.getNom() + " a été nettoyé.");
+        enclos.entretenir();
     }
 
     public void nourrirCreatures(Enclos enclos) {

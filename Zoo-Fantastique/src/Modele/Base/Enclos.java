@@ -18,13 +18,6 @@ public class Enclos {
         this.proprete = proprete;
     }
 
-    public void afficherDetails() {
-        System.out.println("Nom : " + this.getNom());
-        System.out.println("Superficie : " + this.getSuperficie());
-        System.out.println("Nombre de créatures : " + this.getCreatures().size());
-        System.out.println("Propreté : " + this.getProprete()+"%");
-    }
-    
     public void ajouterCreature(Creature creature) {
         if (creatures.size() < capaciteMax) {
             creatures.add(creature);
@@ -52,21 +45,6 @@ public class Enclos {
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Nom de l'enclo: ").append(nom).append("\n");
-        sb.append("Superficie: ").append(superficie).append(" m²\n");
-        sb.append("Capacité maximale: ").append(capaciteMax).append("\n");
-        sb.append("Nombre de créature présente: ").append(creatures.size()).append("\n");
-        sb.append("Propreté: ").append(proprete).append("\n");
-        sb.append("Détail des créature:\n");
-        for (Creature creature : creatures) {
-            sb.append(creature.toString());
-        }
-        return sb.toString();
-    }
-
     public String getNom() {
         return nom;
     }
@@ -86,7 +64,7 @@ public class Enclos {
     public double getProprete() {
         return this.proprete;
     }
-    
+
     public int getNombreCreatures() {
         return creatures.size();
     }
@@ -109,5 +87,19 @@ public class Enclos {
 
     public void setProprete(double proprete) {
         this.proprete = proprete;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("l'").append(nom);
+        sb.append(" a une superficie de ").append(superficie).append(" m² ");
+        sb.append("et une capacité maximale de ").append(capaciteMax).append(" créatures\n");
+        sb.append("L'enclos est propre à ").append(proprete).append("%\n");
+        sb.append("Il contient ").append(creatures.size()).append(" créature.s :\n");
+        for (Creature creature : creatures) {
+            sb.append(creature.toString());
+        }
+        return sb.toString();
     }
 }
