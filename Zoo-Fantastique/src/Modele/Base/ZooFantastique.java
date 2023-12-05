@@ -37,30 +37,4 @@ public class ZooFantastique {
             }
         }
     }
-
-    public void demarrerSimulation() {
-        List<Thread> threads = new ArrayList<>();
-        for (Enclos enclos : enclosList) {
-            Thread thread = new Thread(new SimulerEnclos(enclos));
-            threads.add(thread);
-            thread.start();
-        }
-
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(enclosList.size());
-        for (Enclos enclos : enclosList) {
-            executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
-        }
-
-        for (Thread thread : threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        executor.shutdown();
-        while (!executor.isTerminated()) {
-        }
-    }
 }

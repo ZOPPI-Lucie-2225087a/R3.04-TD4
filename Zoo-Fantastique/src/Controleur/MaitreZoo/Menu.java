@@ -29,6 +29,20 @@ public class Menu {
         }
     }
 
+    public void afficherEnclosVidesEtSales() {
+        boolean enclosVideEtSaleTrouve = false;
+        for (Enclos enclos : listeDesEnclos) {
+            if (enclos.getNombreCreatures() == 0 && enclos.getProprete() < 50) {
+                System.out.println(enclos);
+                enclosVideEtSaleTrouve = true;
+            }
+        }
+    
+        if (!enclosVideEtSaleTrouve) {
+            System.out.println("Aucun enclos n'a besoin ou ne peut être nettoyé.");
+        }
+    }
+
     public Enclos trouverEnclosParNumero(int numero) {
         return listeDesEnclos.get(numero - 1);
     }
@@ -139,8 +153,8 @@ public class Menu {
                 case 2:
                     System.out.print("Entrez le nom de l'enclos à nettoyer parmis la liste suivante : ");
                     afficherNomsEnclos();
-                    String nomEnclosNettoyer = scanner.next();
-                    Enclos enclosNettoyer = trouverEnclosParNom(nomEnclosNettoyer);
+                    int numeroEnclosNettoyer = scanner.nextInt();
+                    Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
                     if (enclosNettoyer != null) {
                         maitreZoo.nettoyerEnclos(enclosNettoyer);
                     } else {
