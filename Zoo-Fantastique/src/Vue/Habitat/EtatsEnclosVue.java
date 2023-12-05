@@ -4,7 +4,7 @@ import Base.Enclos;
 
 public class EtatsEnclosVue {
     
-    private static final String ENCLOSSTANDARD_STRING = //Enclos Standars sans animaux et propre
+    private static final String ENCLOSSTANDARD_STRING = //Enclos Standars sans animaux
     
     "┌──────────────────┐\n" +
     "│░░░░┌─┐░░░░░┌──┐░░│\n" +
@@ -33,9 +33,13 @@ public class EtatsEnclosVue {
         return sb.toString();
     }
 
-    String enclosAvecCreatures = remplacerParZero(ENCLOSSTANDARD_STRING, getNombreCreatures);
+    public static String getEnclosStandardGraphic(Enclos enclos) {
+        return ENCLOSSTANDARD_STRING;
+    }
 
-    private static final String AQUARIUM_STRING =
+    private static final String ENCLOSSTANDARDAVECCREATURES = remplacerParZero(ENCLOSSTANDARD_STRING, getNombreCreatures); //Enclos Standars avec animaux
+
+    private static final String AQUARIUM_STRING = //Aquarium sans animaux
 
     "┌──────────────────┐\n" +
     "│------------------│\n" +
@@ -65,7 +69,7 @@ public class EtatsEnclosVue {
     "│▒▒▒)▒▒▒▒(▒▒▒▒(▒▒▒▒│\n" +
     "└──────────────────┘"; 
 
-private static final String VOLIERE_STRING =
+private static final String VOLIERE_STRING = //Volieres sans animaux
 
     "┌──────────────────┐\n" +
     "│    ____ _   _ _. │\n" +
