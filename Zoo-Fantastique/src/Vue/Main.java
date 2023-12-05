@@ -7,9 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import Base.Creature;
 import Base.Enclos;
-import Base.SimulerCreature;
 import Base.SimulerEnclos;
 import Controleur.MaitreZoo.Menu;
 import Habitat.*;
