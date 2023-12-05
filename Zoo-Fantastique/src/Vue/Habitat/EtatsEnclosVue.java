@@ -1,5 +1,7 @@
 package Habitat;
 
+import Base.Enclos;
+
 public class EtatsEnclosVue {
     
     private static final String ENCLOSSTANDARD_STRING = //Enclos Standars sans animaux et propre
@@ -16,21 +18,22 @@ public class EtatsEnclosVue {
     "│░░│░░░░░│░░░░░░░░░│\n" +
     "│░░│░░░░░░░░░░░░░░░│\n" +
     "└──────────────────┘";
-    
-    private static final String ENCLOSSTANDARDPLEIN_STRING = //Enclos Standars avec animaux et propre
-    
-    "┌──────────────────┐\n" +
-    "│░░░░┌─┐░0░░░┌──┐░░│\n" +
-    "│░│░░│░│░░░░░└──┘░░│\n" +
-    "│░│░░└┬┘░░│░░░0░░░░│\n" +
-    "│░░0░░│░░░░░░░░░░░░│\n" +
-    "│░░░░░0░░░░0░░░░░░░│\n" +
-    "│░░░┌┐░░┌─┐░░┌──┐0░│\n" +
-    "│░░░└┘░░└┬┘░░│░░│░░│\n" +
-    "│░░0░░░░░│░░░└──┘░░│\n" + 
-    "│░░│░░░░░│░0░░░░░░░│\n" +
-    "│░░│░░░░░░░░░░0░░░░│\n" +
-    "└──────────────────┘";      
+
+    public String remplacerParZero(String enclos, int nombreCreatures) {
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+        for (char c : enclos.toCharArray()) {
+            if (c == '░' && count < nombreCreatures) {
+                sb.append('0');
+                count++;
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    String enclosAvecCreatures = remplacerParZero(ENCLOSSTANDARD_STRING, getNombreCreatures);
 
     private static final String AQUARIUM_STRING =
 
@@ -76,14 +79,6 @@ private static final String VOLIERE_STRING =
     "│ (    ) ))      _ │\n" +
     "│_(    `.)    (`','│\n" +
     "└──────────────────┘"; 
-
-
-
-
-    
-
-
-
 
     // a refaire en mieux
     public static String getEnclosStandardGraphic() {
