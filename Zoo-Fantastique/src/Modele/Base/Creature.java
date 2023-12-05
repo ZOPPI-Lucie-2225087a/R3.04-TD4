@@ -24,9 +24,9 @@ public class Creature {
         this.poids = poids;
         this.taille = taille;
         this.age = age;
-        this.indicateurFaim = indicateurFaim;
+        this.indicateurFaim = 100;
         this.dort = dort;
-        this.indicateurSante = indicateurSante;
+        this.indicateurSante = 100;
         this.Cri = Cri;
         this.estVivant = true;
     }
