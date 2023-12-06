@@ -24,7 +24,7 @@ public abstract class Enclos {
         if (creatures.size() < capaciteMax) {
             creatures.add(creature);
         } else {
-            System.out.println("L'enclo et plein !");
+            System.out.println("L'enclo est plein !");
         }
     }
 

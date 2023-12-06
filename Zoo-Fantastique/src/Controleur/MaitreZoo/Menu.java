@@ -43,8 +43,6 @@ public class Menu {
         return listeDesEnclos.get(numero - 1);
     }
 
-    
-
     public void afficherNomsCreatures() {
         System.out.print("Créatures disponibles : ");
         for (Enclos enclos : listeDesEnclos) {
@@ -151,6 +149,10 @@ public class Menu {
                 case 2:
                     if (afficherEnclosVidesEtSales()) {
                         System.out.print("Entrez le numéro de l'enclos à nettoyer parmi la liste suivante : ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                            scanner.next();
+                        }
                         int numeroEnclosNettoyer = scanner.nextInt();
                         Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
                         if (enclosNettoyer != null) {
