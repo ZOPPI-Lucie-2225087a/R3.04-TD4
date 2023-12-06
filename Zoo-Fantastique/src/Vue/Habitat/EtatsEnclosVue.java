@@ -1,5 +1,7 @@
 package Habitat;
 
+import java.util.Random;
+
 import Base.Enclos;
 
 public class EtatsEnclosVue {
@@ -17,62 +19,60 @@ public class EtatsEnclosVue {
 
     private static final String ENCLOSSTANDARD_STRING = // Enclos Standards sans animaux
 
-            "┌──────────────────┐\n" +
-                    "│░░░░┌─┐░░░░░┌──┐░░│\n" +
-                    "│░│░░│░│░░░░░└──┘░░│\n" +
-                    "│░│░░└┬┘░░│░░░░░░░░│\n" +
-                    "│░░░░░│░░░░░░░░░░░░│\n" +
-                    "│░░░░░░░░░░░░░░░░░░│\n" +
-                    "│░░░┌┐░░┌─┐░░┌──┐░░│\n" +
-                    "│░░░└┘░░└┬┘░░│░░│░░│\n" +
-                    "│░░░░░░░░│░░░└──┘░░│\n" +
-                    "│░░│░░░░░│░░░░░░░░░│\n" +
-                    "│░░│░░░░░░░░░░░░░░░│\n" +
-                    "└──────────────────┘";
+        "┌──────────────────┐\n" +
+        "│░░░░┌─┐░░░░░┌──┐░░│\n" +
+        "│░│░░│░│░░░░░└──┘░░│\n" +
+        "│░│░░└┬┘░░│░░░░░░░░│\n" +
+        "│░░░░░│░░░░░░░░░░░░│\n" +
+        "│░░░░░░░░░░░░░░░░░░│\n" +
+        "│░░░┌┐░░┌─┐░░┌──┐░░│\n" +
+        "│░░░└┘░░└┬┘░░│░░│░░│\n" +
+        "│░░░░░░░░│░░░└──┘░░│\n" +
+        "│░░│░░░░░│░░░░░░░░░│\n" +
+        "│░░│░░░░░░░░░░░░░░░│\n" +
+        "└──────────────────┘";
 
     private static final String AQUARIUM_STRING = // Aquarium sans animaux
 
-            "┌──────────────────┐\n" +
-                    "│------------------│\n" +
-                    "│^^▒^▒▒^^^▒^▒^^▒▒^^│\n" +
-                    "│▒^^▒▒^^^▒^▒^^▒▒^^^│\n" +
-                    "│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│\n" +
-                    "│▒▒▒▒▒▒▒▒~~~▒▒▒▒▒▒▒│\n" +
-                    "│▒▒~~~▒▒▒▒▒▒▒▒▒▒▒▒▒│\n" +
-                    "│▒▒▒▒▒▒▒▒▒▒▒▒▒~~~▒▒│\n" +
-                    "│▒▒▒▒▒▒▒▒(▒▒▒▒▒▒▒▒▒│\n" +
-                    "│▒▒(▒▒▒▒▒▒)▒▒▒▒)▒▒▒│\n" +
-                    "│▒▒▒)▒▒▒▒(▒▒▒▒(▒▒▒▒│\n" +
-                    "└──────────────────┘";
+        "┌──────────────────┐\n" +
+        "│------------------│\n" +
+        "│^^▒^▒▒^^^▒^▒^^▒▒^^│\n" +
+        "│▒^^▒▒^^^▒^▒^^▒▒^^^│\n" +
+        "│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│\n" +
+        "│▒▒▒▒▒▒▒▒~~~▒▒▒▒▒▒▒│\n" +
+        "│▒▒~~~▒▒▒▒▒▒▒▒▒▒▒▒▒│\n" +
+        "│▒▒▒▒▒▒▒▒▒▒▒▒▒~~~▒▒│\n" +
+        "│▒▒▒▒▒▒▒▒(▒▒▒▒▒▒▒▒▒│\n" +
+        "│▒▒(▒▒▒▒▒▒)▒▒▒▒)▒▒▒│\n" +
+        "│▒▒▒)▒▒▒▒(▒▒▒▒(▒▒▒▒│\n" +
+        "└──────────────────┘";
 
     private static final String VOLIERE_STRING = // Volières sans animaux
 
-            "┌──────────────────┐\n" +
-                    "│    ____ _   _ _. │\n" +
-                    "│  _(    `.) (_)_))│\n" +
-                    "│ ( (    ) ))      │\n" +
-                    "│( (   )  _)       │\n" +
-                    "│ '.__)--'  _ __   │\n" +
-                    "│  __      ( (  )`.│\n" +
-                    "│.'  )--_ ( (    ))│\n" +
-                    "│(   )   ) `-(__.' │\n" +
-                    "│ (    ) ))      _ │\n" +
-                    "│_(    `.)    (`','│\n" +
-                    "└──────────────────┘";
+        "┌──────────────────┐\n" +
+        "│    ____ _   _ _. │\n" +
+        "│  _(    `.) (_)_))│\n" +
+        "│ ( (    ) ))      │\n" +
+        "│( (   )  _)       │\n" +
+        "│ '.__)--'  _ __   │\n" +
+        "│  __      ( (  )`.│\n" +
+        "│.'  )--_ ( (    ))│\n" +
+        "│(   )   ) `-(__.' │\n" +
+        "│ (    ) ))      _ │\n" +
+        "│_(    `.)    (`','│\n" +
+        "└──────────────────┘";
 
     public String remplacerParZero(String enclos, int nombreCreatures) {
-        System.out.println(nombreCreatures);
-        int count = 0;
-        StringBuilder sb = new StringBuilder();
-        for (char c : enclos.toCharArray()) {
-            if (c == '░' || c == '▒' || c == ' ' && count < nombreCreatures) {
-                sb.append('0');
-                count++;
-            } else {
-                sb.append(c);
-            }
+        Random rand = new Random();
+        char[] enclosChars = enclos.toCharArray();
+        for (int i = 0; i < nombreCreatures; i++) {
+            int randomIndex;
+            do {
+                randomIndex = rand.nextInt(enclosChars.length);
+            } while (enclosChars[randomIndex] != '░' && enclosChars[randomIndex] != '▒' && enclosChars[randomIndex] != ' ');
+            enclosChars[randomIndex] = '0';
         }
-        return sb.toString();
+        return new String(enclosChars);
     }
 
     public String getEnclosGraphic(String habitat) {
