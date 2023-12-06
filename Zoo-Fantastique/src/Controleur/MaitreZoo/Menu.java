@@ -30,16 +30,11 @@ public class Menu {
     }
 
     public boolean afficherEnclosVidesEtSales() {
-        boolean enclosVideEtSaleTrouve = false;
         for (Enclos enclos : listeDesEnclos) {
             if (enclos.getNombreCreatures() == 0 && enclos.getProprete() < 50) {
-                System.out.println(enclos);
-                enclosVideEtSaleTrouve = true;
+                System.out.println(enclos.getNom());
                 return true;
             }
-        }
-        if (!enclosVideEtSaleTrouve) {
-            System.out.println("Aucun enclos n'a besoin ou ne peut être nettoyé.");
         }
         return false;
     }
@@ -47,6 +42,8 @@ public class Menu {
     public Enclos trouverEnclosParNumero(int numero) {
         return listeDesEnclos.get(numero - 1);
     }
+
+    
 
     public void afficherNomsCreatures() {
         System.out.print("Créatures disponibles : ");
@@ -133,7 +130,7 @@ public class Menu {
             System.out.println("2. Nettoyer un enclos");
             System.out.println("3. Nourrir les créatures d'un enclos");
             System.out.println("4. Transférer une créature d'un enclos à un autre");
-            System.out.println("5. Quitter");
+            System.out.println("99. Quitter");
             System.out.print("Choisissez une option : ");
             choix = scanner.nextInt();
 
@@ -144,31 +141,34 @@ public class Menu {
                     int numeroEnclosExaminer = scanner.nextInt();
                     Enclos enclosExaminer = trouverEnclosParNumero(numeroEnclosExaminer);
                     if (enclosExaminer != null) {
-                        maitreZoo.examinerEnclos(enclosExaminer);
+                        maitreZoo.examinerEnclos(enclosExaminer, enclosExaminer.getHabitat());
                         System.out.println(enclosExaminer.toString());
                     } else {
-                        System.out.println("Aucun enclos trouvé avec ce nom.");
+                        System.out.println("Aucun enclos trouvé.");
                     }
                     break;
 
                 case 2:
-                    if (afficherEnclosVidesEtSales())
-                    System.out.print("Entrez le nom de l'enclos à nettoyer parmis la liste suivante : ");
-                    int numeroEnclosNettoyer = scanner.nextInt();
-                    Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
-                    if (enclosNettoyer != null) {
-                        maitreZoo.nettoyerEnclos(enclosNettoyer);
+                    if (afficherEnclosVidesEtSales()) {
+                        System.out.print("Entrez le numéro de l'enclos à nettoyer parmi la liste suivante : ");
+                        int numeroEnclosNettoyer = scanner.nextInt();
+                        Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
+                        if (enclosNettoyer != null) {
+                            maitreZoo.nettoyerEnclos(enclosNettoyer);
+                        } else {
+                            System.out.println("Aucun enclos trouvé avec ce numéro.");
+                        }
                     } else {
-                        System.out.println("Aucun enclos trouvé avec ce nom.");
+                        System.out.println("Aucun enclos n'a besoin d'être nettoyé ou ne peut être nettoyé.");
                     }
                     break;
 
                 case 3:
                     System.out.print(
-                            "Entrez le nom de l'enclos dont vous voulez nourrir les créatures parmis la liste suivante : ");
+                            "Entrez le numéro de l'enclos dont vous voulez nourrir les créatures parmis la liste suivante : ");
                     afficherNomsEnclos();
-                    String nomEnclosNourrir = scanner.next();
-                    Enclos enclosNourrir = trouverEnclosParNom(nomEnclosNourrir);
+                    int nomEnclosNourrir = scanner.nextInt();
+                    Enclos enclosNourrir = trouverEnclosParNumero(nomEnclosNourrir);
                     if (enclosNourrir != null) {
                         maitreZoo.nourrirCreatures(enclosNourrir);
                     } else {
@@ -214,7 +214,7 @@ public class Menu {
                     }
                     break;
 
-                case 5:
+                case 99:
                     System.out.println("Au revoir !");
                     break;
 

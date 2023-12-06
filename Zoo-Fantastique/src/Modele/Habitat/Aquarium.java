@@ -19,6 +19,11 @@ public class Aquarium extends Enclos {
     }
 
     @Override
+    public String getHabitat() {
+        return "aquarium";
+    }
+
+    @Override
     public void entretenir() {
         super.entretenir();
         verifierQualiteEau();

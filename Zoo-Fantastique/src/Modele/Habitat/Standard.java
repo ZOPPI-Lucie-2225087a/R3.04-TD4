@@ -14,6 +14,11 @@ public class Standard extends Enclos {
     }
 
     @Override
+    public String getHabitat() {
+        return "standard";
+    }
+
+    @Override
     public void entretenir() {
         super.entretenir();
         System.out.println("L'enclos terrestre a été entretenu.");

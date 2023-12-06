@@ -19,6 +19,11 @@ public class Voliere extends Enclos {
     }
 
     @Override
+    public String getHabitat() {
+        return "voliere";
+    }
+
+    @Override
     public void ajouterCreature(Creature creature) {
         if (!(creature instanceof CreatureVolante)) {
             System.out.println("Seules les créatures volantes peuvent être ajoutées à une volière.");

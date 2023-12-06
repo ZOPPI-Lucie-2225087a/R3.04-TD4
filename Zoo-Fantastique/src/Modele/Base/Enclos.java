@@ -3,12 +3,14 @@ package Base;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Enclos {
+public abstract class Enclos {
     private String nom;
     private double superficie;
     private int capaciteMax;
     private List<Creature> creatures;
     protected double proprete;
+
+    public abstract String getHabitat();
 
     public Enclos(String nom, double superficie, int capaciteMax, List<Creature> creatures, double proprete) {
         this.nom = nom;

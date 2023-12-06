@@ -1,5 +1,7 @@
 package MaitreZoo;
 
+import java.util.Scanner;
+
 import Base.Creature;
 import Base.Enclos;
 import Habitat.EtatsEnclosVue;
@@ -39,13 +41,10 @@ public class MaitreZoo {
         this.age = age;
     }
 
-    public void examinerEnclos(Enclos enclos) {
+    public void examinerEnclos(Enclos enclos, String habitat) {
         System.out.println("Examen de l'enclos : " + enclos.getNom());
-        if (enclos.getNombreCreatures() == enclos.getCapaciteMax()) {
-            System.out.println(EtatsEnclosVue.getEnclosStandardPleinGraphic());
-        } else {
-            System.out.println(EtatsEnclosVue.getEnclosStandardGraphic());
-        }
+        EtatsEnclosVue vue = new EtatsEnclosVue(enclos, habitat);
+        System.out.println(vue.getENCLOSAVECCREATURES());
     }
 
     public void nettoyerEnclos(Enclos enclos) {
