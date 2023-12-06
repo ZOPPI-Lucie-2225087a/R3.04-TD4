@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import Base.Enclos;
 import Base.SimulerEnclos;
-import Controleur.MaitreZoo.Menu;
+import Controller.MaitreZoo.Menu;
 import Habitat.*;
 import MaitreZoo.*;
 
