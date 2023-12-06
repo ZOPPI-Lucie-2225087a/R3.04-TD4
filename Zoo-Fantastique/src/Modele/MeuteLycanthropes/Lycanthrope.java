@@ -7,6 +7,7 @@ import MeuteLycanthropes.Meute;
 
 public class Lycanthrope {
 
+    private String nom;
     private char sexe;
     private String categorieAge;
     private int force;
@@ -15,8 +16,10 @@ public class Lycanthrope {
     private int niveau;
     private int facteurImpetuosite;
     private Meute meute;
+    
 
-    public Lycanthrope(char sexe, String categorieAge, RangDomination rangDomination) {
+    public Lycanthrope(String nom, char sexe, String categorieAge, RangDomination rangDomination) {
+        this.nom = nom;
         this.sexe = sexe;
         this.categorieAge = categorieAge;
         this.force = (rangDomination == RangDomination.ALPHA) ? 3 : 1;
@@ -28,6 +31,7 @@ public class Lycanthrope {
     }
 
     public void afficherCaracteristiques() {
+        System.out.println("Nom: " + nom);
         System.out.println("Sexe: " + sexe);
         System.out.println("Catégorie d'âge: " + categorieAge);
         System.out.println("Force: " + force);
@@ -89,9 +93,9 @@ public class Lycanthrope {
         }
     }
 
-    public void facteurImpetuositeAleatoire() {
-        Random random = new Random();
-        this.facteurImpetuosite = random.nextInt(100);
+    private int facteurImpetuositeAleatoire() {
+        Random rand = new Random();
+        return rand.nextInt(10) + 1;
     }
 
     public void hurler() {
@@ -105,5 +109,9 @@ public class Lycanthrope {
     
     public RangDomination getRangDomination() {
         return this.rangDomination;
+    }
+
+    public String getNom() {
+        return this.nom;
     }
 }
