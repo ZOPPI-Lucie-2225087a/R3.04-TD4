@@ -35,4 +35,20 @@ public enum RangDomination {
     public String getSymbol() {
         return this.symbol;
     }
+    
+    public RangDomination next() {
+        int nextOrdinal = this.ordinal() + 1;
+        if (nextOrdinal >= RangDomination.values().length) {
+            nextOrdinal = 0;
+        }
+        return RangDomination.values()[nextOrdinal];
+    }
+    
+    public RangDomination previous() {
+        int prevOrdinal = this.ordinal() - 1;
+        if (prevOrdinal < 0) {
+            prevOrdinal = RangDomination.values().length - 1;
+        }
+        return RangDomination.values()[prevOrdinal];
+    }
 }
