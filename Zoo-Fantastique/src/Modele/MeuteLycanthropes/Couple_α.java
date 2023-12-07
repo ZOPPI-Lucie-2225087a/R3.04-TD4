@@ -1,21 +1,55 @@
 package MeuteLycanthropes;
 
+import java.util.List;
+import static java.util.Collections.swap;
+
 public class Couple_α {
     private Lycanthrope maleAlpha;
-    private Lycanthrope femaleAlpha;
+    private Lycanthrope femelleAlpha;
 
-    public Couple_α(Lycanthrope maleAlpha, Lycanthrope femaleAlpha) {
+    private List<Lycanthrope> femelles;
+
+
+
+    public Couple_α(Lycanthrope maleAlpha, List<Lycanthrope> femelles) {
         this.maleAlpha = maleAlpha;
-        this.femaleAlpha = femaleAlpha;
+        this.femelles = femelles;
+        this.femelleAlpha = trouverNouvelleFemelleAlpha();
     }
 
-    public Lycanthrope getMaleAlpha() {
-        return this.maleAlpha;
+    public void setFemelles(List<Lycanthrope> nouvellesFemelles) {
+        this.femelles.clear();
+        this.femelles.addAll(nouvellesFemelles);
+        this.femelleAlpha = trouverNouvelleFemelleAlpha();
     }
 
-    public Lycanthrope getFemaleAlpha() {
-        return this.femaleAlpha;
+    private Lycanthrope trouverNouvelleFemelleAlpha() {
+        Lycanthrope nouvelleFemelleAlpha = null;
+        int forceFemelleAlpha = -1;
+
+        for (Lycanthrope femelle : femelles) {
+            if (femelle.getSexe() == 'F' && femelle.getForce() > forceFemelleAlpha) {
+                forceFemelleAlpha = femelle.getForce();
+                nouvelleFemelleAlpha = femelle;
+            }
+        }
+
+        return nouvelleFemelleAlpha;
     }
-    
-//a finir 
+
+    public void dechuFemelleAlpha(Lycanthrope ancienneFemelleAlpha) {
+        if (ancienneFemelleAlpha == this.femelleAlpha) {
+            ancienneFemelleAlpha.setRangDomination(this.maleAlpha.getRangDomination());
+        }
+    }
+    //a ajouter dans meute
+    public void verifierChangementFemelleAlpha() {
+        if (!femelles.contains(femelleAlpha)) {
+            dechuFemelleAlpha(femelleAlpha);
+            femelleAlpha = trouverNouvelleFemelleAlpha();
+        }
+    }
+
+
 }
+

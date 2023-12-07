@@ -51,4 +51,7 @@ public enum RangDomination {
         }
         return RangDomination.values()[prevOrdinal];
     }
+
+
+
 }

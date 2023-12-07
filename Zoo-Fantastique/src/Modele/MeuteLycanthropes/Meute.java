@@ -63,4 +63,19 @@ public class Meute {
     public ArrayList<Lycanthrope> getLycanthropes() {
         return this.lycanthropes;
     }
+
+
+    /**
+     *
+     *
+     * public void ajouterFemelle(Lycanthrope nouvelleFemelle) {
+     *     this.femelles.add(nouvelleFemelle);
+     *     verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après l'ajout
+     * }
+     *
+     * public void supprimerFemelle(Lycanthrope femelleASupprimer) {
+     *     this.femelles.remove(femelleASupprimer);
+     *     verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après la suppression
+     * }
+     */
 }
