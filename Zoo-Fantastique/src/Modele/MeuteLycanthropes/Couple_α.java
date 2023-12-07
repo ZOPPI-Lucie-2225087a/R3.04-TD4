@@ -1,7 +1,6 @@
 package MeuteLycanthropes;
 
 import java.util.List;
-import static java.util.Collections.swap;
 
 public class Couple_α {
     private Lycanthrope maleAlpha;
@@ -9,15 +8,13 @@ public class Couple_α {
 
     private List<Lycanthrope> femelles;
 
-
-
     public Couple_α(Lycanthrope maleAlpha, List<Lycanthrope> femelles) {
         this.maleAlpha = maleAlpha;
         this.femelles = femelles;
         this.femelleAlpha = trouverNouvelleFemelleAlpha();
     }
 
-    public void setFemelles(List<Lycanthrope> nouvellesFemelles) {
+    public void setFemelles(List<Lycanthrope> nouvellesFemelles) { //met a jour la liste ed femelle
         this.femelles.clear();
         this.femelles.addAll(nouvellesFemelles);
         this.femelleAlpha = trouverNouvelleFemelleAlpha();
@@ -42,14 +39,5 @@ public class Couple_α {
             ancienneFemelleAlpha.setRangDomination(this.maleAlpha.getRangDomination());
         }
     }
-    //a ajouter dans meute
-    public void verifierChangementFemelleAlpha() {
-        if (!femelles.contains(femelleAlpha)) {
-            dechuFemelleAlpha(femelleAlpha);
-            femelleAlpha = trouverNouvelleFemelleAlpha();
-        }
-    }
-
-
 }
 
