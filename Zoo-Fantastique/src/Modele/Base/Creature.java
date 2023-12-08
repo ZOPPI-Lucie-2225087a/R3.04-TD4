@@ -32,7 +32,6 @@ public class Creature {
     }
 
     public void manger() {
-        mourir();
         if (!dort) {
             indicateurFaim += 30;
             if (indicateurFaim > 100) {
@@ -62,7 +61,6 @@ public class Creature {
     }
 
     public void diminuerSante(int quantite) {
-        mourir();
         indicateurSante -= quantite;
         if (indicateurSante <= 0) {
         }
@@ -77,7 +75,6 @@ public class Creature {
     }
 
     public double vieillir() {
-        mourir();
         age++;
 
         double probaMourir = A * Math.exp(B * age);
