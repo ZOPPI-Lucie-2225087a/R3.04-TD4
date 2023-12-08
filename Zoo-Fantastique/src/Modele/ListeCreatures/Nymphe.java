@@ -39,16 +39,6 @@ public class Nymphe extends Vivipare implements CreatureTerrestre {
     }
 
     /**
-     * Permet à la Nymphe de mettre bas. Cette méthode est actuellement non implémentée (retourne null).
-     *
-     * @return Toujours null dans la version actuelle.
-     */
-    @Override
-    public Creature mettreBas() {
-        return null;
-    }
-
-    /**
      * Permet à la Nymphe de courir.
      */
     @Override

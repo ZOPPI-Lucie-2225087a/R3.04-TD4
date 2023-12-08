@@ -81,7 +81,7 @@ public class Main {
                 ScheduledExecutorService executor = Executors
                                 .newScheduledThreadPool(gestionnaireEnclos.getListeDesEnclos().size());
                 for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
-                        executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
+                        executor.scheduleAtFixedRate(new SimulerEnclos(Arrays.asList(enclos)), 0, 1, TimeUnit.SECONDS);
                 }
 
                 ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(listeDesCreatures.size());
