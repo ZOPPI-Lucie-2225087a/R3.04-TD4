@@ -85,9 +85,8 @@ public class Main {
                                         TimeUnit.SECONDS);
                 }
 
-                ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(listeDesCreatures.size());
                 for (Creature creature : listeDesCreatures) {
-                        executor2.scheduleAtFixedRate(new SimulerCreature(creature), 0, 1, TimeUnit.SECONDS);
+                        executor.scheduleAtFixedRate(new SimulerCreature(creature), 0, 1, TimeUnit.SECONDS);
                 }
         }
 }

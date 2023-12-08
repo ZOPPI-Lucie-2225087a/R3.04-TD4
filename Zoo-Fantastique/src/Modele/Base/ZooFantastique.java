@@ -35,6 +35,8 @@ public class ZooFantastique {
         this.maitre = maitre;
         this.maxEnclos = maxEnclos;
         this.gestionnaireEnclos = gestionnaireEnclos;
+        this.maitre = maitre;
+        this.menu = new Menu(maitre, gestionnaireEnclos);
     }
 
     public void afficherNombreCreatures() {
@@ -52,10 +54,6 @@ public class ZooFantastique {
                 System.out.println("Creature : " + creature.getNom());
             }
         }
-    }
-
-    public ZooFantastique(MaitreZoo maitreZoo, GestionnaireEnclos gestionnaireEnclos) {
-        this.menu = new Menu(maitreZoo, gestionnaireEnclos);
     }
     
     public void gererZoo() {
@@ -82,7 +80,7 @@ public class ZooFantastique {
                     afficherCreaturesEnclos();
                     break;
                 case 3:
-                    menu.afficherMenu();
+                    this.menu.afficherMenu();
                     break;
                 case 4:
                     System.out.println("Au revoir !");
