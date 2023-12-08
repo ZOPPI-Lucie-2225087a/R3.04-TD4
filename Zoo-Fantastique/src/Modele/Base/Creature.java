@@ -10,7 +10,7 @@ public class Creature {
     private int indicateurFaim;
     private boolean dort;
     private int indicateurSante;
-    private String Cri;
+    private boolean malade;
     private boolean estVivant;
 
     private static final double B = Math.log(2) / 10;
@@ -27,16 +27,18 @@ public class Creature {
         this.indicateurFaim = 100;
         this.dort = dort;
         this.indicateurSante = 100;
-        this.Cri = Cri;
+        this.malade = false;
         this.estVivant = true;
     }
 
     public void manger() {
+        mourir();
         if (!dort) {
             indicateurFaim += 30;
             if (indicateurFaim > 100) {
                 indicateurFaim = 100;
             }
+            poids += 3;
             emettreSon("Je mange");
         } else {
             emettreSon("Je ne mange pas car je dors");
@@ -47,44 +49,51 @@ public class Creature {
         System.out.println(son);
     }
 
+    public void etreMalade() {
+        malade = true;
+    }
+
     public void etreSoigne() {
-        indicateurSante += 30;
+        indicateurSante += 60;
         if (indicateurSante > 100) {
             indicateurSante = 100;
         }
-        emettreSon("Je ne suis plus malade");
+        malade = false;
     }
 
     public void diminuerSante(int quantite) {
+        mourir();
         indicateurSante -= quantite;
         if (indicateurSante <= 0) {
-            mourir("Je suis mort de maladie");
         }
     }
 
     public void dormir() {
         dort = true;
-        emettreSon("Je m'endors");
     }
 
     public void seReveiller() {
         dort = false;
-        emettreSon("Je me réveille");
     }
 
-    public void vieilir() {
+    public double vieilir() {
+        mourir();
         age++;
-        emettreSon("Je vieillis. Mon âge est maintenant : " + age);
 
         double probaMourir = A * Math.exp(B * age);
-
-        if (Math.random() < probaMourir) {
-            mourir("Je suis mort de vieillesse");
-        }
+        return probaMourir;
     }
 
-    public void mourir(String raison) {
-        emettreSon(raison);
+    public void mourir() {
+        if (Math.random() < vieilir()) {
+            emettreSon(this.getNom() + " est mort de vieillesse");
+        }
+        if (indicateurFaim <=0) {
+            emettreSon(this.getNom() + " est mort de faim");
+        }
+        if (poids > 350){
+            emettreSon(this.getNom() + " est mOrt d'Obésité");
+        }
     }
 
     @Override
@@ -172,12 +181,8 @@ public class Creature {
         this.indicateurSante = indicateurSante;
     }
 
-    public String getCri() {
-        return Cri;
-    }
-
-    public void setCri(String cri) {
-        Cri = cri;
+    public boolean getmalade() {
+        return malade;
     }
 
     public boolean isEstVivant() {

@@ -103,7 +103,7 @@ public class Lycanthrope {
     }
 
     public void hurler() {
-        Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque cri marche
+        Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque malade marche
         hurlement.hurler(hurlement);
     }
 

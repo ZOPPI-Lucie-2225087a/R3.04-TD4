@@ -8,12 +8,12 @@ import MeuteLycanthropes.Meute;
 public class Meute {
     
     private ArrayList<Lycanthrope> lycanthropes;
-    private String cri;
+    private boolean malade;
 
-    public Meute(String cri) {
+    public Meute(boolean malade) {
         this.lycanthropes = new ArrayList<Lycanthrope>();
-        this.cri = cri;
-        System.out.println("Une nouvelle meute a été créée ! (cri : \"" + this.cri + "\")");
+        this.malade = malade;
+        System.out.println("Une nouvelle meute a été créée ! (malade : \"" + this.malade + "\")");
     }
 
     public void afficherLycanthropes() {
@@ -58,8 +58,8 @@ public class Meute {
         }
     }
 
-    public String getCri() {
-        return cri;
+    public String getmalade() {
+        return malade;
     }
 
     public ArrayList<Lycanthrope> getLycanthropes() {
