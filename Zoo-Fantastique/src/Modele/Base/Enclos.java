@@ -39,12 +39,8 @@ public abstract class Enclos {
     }
 
     public void entretenir() {
-        if (creatures.isEmpty() && proprete < 50.0) {
-            proprete = 100.0;
-            System.out.println("L'enclos a été entretenu, il est désormais propre.");
-        } else {
-            System.out.println("L'enclos ne peut pas être entretenu car il n'est pas vide ou n'est pas assez sale.");
-        }
+        proprete = 100.0;
+        System.out.println("L'enclos a été entretenu, il est désormais propre.");
     }
 
     public String getNom() {
@@ -90,6 +86,7 @@ public abstract class Enclos {
     public void setProprete(double proprete) {
         this.proprete = proprete;
     }
+    
 
     @Override
     public String toString() {

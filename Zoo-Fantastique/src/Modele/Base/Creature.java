@@ -15,7 +15,7 @@ public class Creature {
 
     private static final double B = Math.log(2) / 10;
     private static final double A = 0.1 / Math.exp(B * 60);
-    
+
     public Creature(String nomEspece, String nom, char sexe, double poids, double taille, int age,
             int indicateurFaim, boolean dort, int indicateurSante) {
         this.nomEspece = nomEspece;
@@ -89,17 +89,15 @@ public class Creature {
 
     @Override
     public String toString() {
-        return "Creature {\n" +
-                "\tnomEspece: " + nomEspece + ",\n" +
-                "\tnom: " + nom + ",\n" +
-                "\tsexe: " + sexe + ",\n" +
-                "\tpoids: " + poids + ",\n" +
-                "\ttaille: " + taille + ",\n" +
-                "\tage: " + age + ",\n" +
-                "\tindicateurFaim: " + indicateurFaim + ",\n" +
-                "\tdort: " + dort + ",\n" +
-                "\tindicateurSante: " + indicateurSante + "\n" +
-                "\t}";
+        StringBuilder sb = new StringBuilder();
+        sb.append("La créature ").append(nom).append(".\n");
+        sb.append("C'est un").append(sexe == 'M' ? " mâle" : "e femelle").append(".\n");
+        sb.append("Elle pèse ").append(poids).append(" kg et mesure ").append(taille).append(" cm.\n");
+        sb.append("Elle a ").append(age).append(age > 1 ? " ans" : " an").append(".\n");
+        sb.append("Son indicateur de faim est à ").append(indicateurFaim).append(".\n");
+        sb.append("Elle est ").append(dort ? "endormie" : "éveillée").append(".\n");
+        sb.append("Son indicateur de santé est à ").append(indicateurSante).append(".\n\n");
+        return sb.toString();
     }
 
     public String getNomEspece() {
@@ -188,6 +186,10 @@ public class Creature {
 
     public void setEstVivant(boolean estVivant) {
         this.estVivant = estVivant;
+    }
+
+    public Creature Reproduction(GestionnaireEnclos gestionnaireEnclos) {
+        return null;
     }
 
 }

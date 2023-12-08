@@ -6,31 +6,30 @@ import java.util.Scanner;
 
 import Base.Creature;
 import Base.Enclos;
+import Base.GestionnaireEnclos;
 import Habitat.*;
-import Interface.CreatureMarine;
-import Interface.CreatureTerrestre;
-import Interface.CreatureVolante;
+import Interface.*;
 import MaitreZoo.MaitreZoo;
 
 public class Menu {
     private MaitreZoo maitreZoo;
     private Scanner scanner;
-    private List<Enclos> listeDesEnclos;
+    private GestionnaireEnclos gestionnaireEnclos;
 
-    public Menu(MaitreZoo maitreZoo, List<Enclos> listeDesEnclos) {
+    public Menu(MaitreZoo maitreZoo, GestionnaireEnclos gestionnaireEnclos) {
         this.maitreZoo = maitreZoo;
         this.scanner = new Scanner(System.in);
-        this.listeDesEnclos = listeDesEnclos;
+        this.gestionnaireEnclos = gestionnaireEnclos;
     }
 
     public void afficherNomsEnclos() {
-        for (int i = 0; i < listeDesEnclos.size(); i++) {
-            System.out.println((i + 1) + ". " + listeDesEnclos.get(i).getNom());
+        for (int i = 0; i < gestionnaireEnclos.getListeDesEnclos().size(); i++) {
+            System.out.println((i + 1) + ". " + gestionnaireEnclos.getListeDesEnclos().get(i).getNom());
         }
     }
 
     public boolean afficherEnclosVidesEtSales() {
-        for (Enclos enclos : listeDesEnclos) {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             if (enclos.getNombreCreatures() == 0 && enclos.getProprete() < 50) {
                 System.out.println(enclos.getNom());
                 return true;
@@ -40,22 +39,28 @@ public class Menu {
     }
 
     public Enclos trouverEnclosParNumero(int numero) {
-        return listeDesEnclos.get(numero - 1);
+        return gestionnaireEnclos.getListeDesEnclos().get(numero - 1);
     }
 
     public void afficherNomsCreatures() {
-        System.out.print("Créatures disponibles : ");
-        for (Enclos enclos : listeDesEnclos) {
+        System.out.print("Créatures disponibles : \n");
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
-                System.out.print(creature.getNom() + " | ");
+                System.out.print("-" + creature.getNom() + "\n");
             }
         }
-        System.out.println();
+    }
+
+    public void afficherNomsCreaturesParEnclos(Enclos enclos) {
+        System.out.print("Créatures disponibles : \n");
+        for (Creature creature : enclos.getCreatures()) {
+            System.out.print("-" + creature.getNom() + "\n");
+        }
     }
 
     private Enclos trouverEnclosParNom(String nomEnclos) {
-        for (Enclos enclos : listeDesEnclos) {
-            if (enclos.getNom().equals(nomEnclos)) {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
+            if (enclos.getNom().toLowerCase().equals(nomEnclos.toLowerCase())) {
                 return enclos;
             }
         }
@@ -63,9 +68,9 @@ public class Menu {
     }
 
     public Creature trouverCreatureParNom(String nomCreature) {
-        for (Enclos enclos : listeDesEnclos) {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
-                if (creature.getNom().equals(nomCreature)) {
+                if (creature.getNom().toLowerCase().equals(nomCreature.toLowerCase())) {
                     return creature;
                 }
             }
@@ -74,9 +79,9 @@ public class Menu {
     }
 
     public Enclos trouverEnclosParEspece(String espece) {
-        for (Enclos enclos : listeDesEnclos) {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
-                if (creature.getNomEspece().equals(espece)) {
+                if (creature.getNomEspece().toLowerCase().equals(espece.toLowerCase())) {
                     return enclos;
                 }
             }
@@ -112,7 +117,7 @@ public class Menu {
     }
 
     public Enclos trouverEnclosParEspeceEtType(String espece, String type) {
-        for (Enclos enclos : listeDesEnclos) {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             if (enclos.getNom().equals(espece) && enclos.getClass().getSimpleName().equals(type)) {
                 return enclos;
             }
@@ -128,8 +133,13 @@ public class Menu {
             System.out.println("2. Nettoyer un enclos");
             System.out.println("3. Nourrir les créatures d'un enclos");
             System.out.println("4. Transférer une créature d'un enclos à un autre");
+            System.out.println("5. Faire reproduire des créatures");
             System.out.println("99. Quitter");
             System.out.print("Choisissez une option : ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                scanner.next();
+            }
             choix = scanner.nextInt();
 
             switch (choix) {
@@ -148,17 +158,17 @@ public class Menu {
 
                 case 2:
                     if (afficherEnclosVidesEtSales()) {
-                        System.out.print("Entrez le numéro de l'enclos à nettoyer parmi la liste suivante : ");
-                        while (!scanner.hasNextInt()) {
-                            System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                        System.out.print("Entrez le nom de l'enclos à nettoyer parmi la liste suivante : ");
+                        while (!scanner.hasNext()) {
+                            System.out.println("Ce n'est pas un nom valide. Essayez encore.");
                             scanner.next();
                         }
-                        int numeroEnclosNettoyer = scanner.nextInt();
-                        Enclos enclosNettoyer = trouverEnclosParNumero(numeroEnclosNettoyer);
-                        if (enclosNettoyer != null) {
+                        String nomEnclosNettoyer = scanner.next();
+                        Enclos enclosNettoyer = trouverEnclosParNom(nomEnclosNettoyer);
+                        if (enclosNettoyer.getProprete() < 50.0) {
                             maitreZoo.nettoyerEnclos(enclosNettoyer);
                         } else {
-                            System.out.println("Aucun enclos trouvé avec ce numéro.");
+                            System.out.println("Cet enclos ne peut pas être nettoyé car pas assez sale.");
                         }
                     } else {
                         System.out.println("Aucun enclos n'a besoin d'être nettoyé ou ne peut être nettoyé.");
@@ -204,7 +214,7 @@ public class Menu {
                                     enclosDestination = new Aquarium(("aquarium" + creatureTransferer.getNomEspece()),
                                             100, 10, new ArrayList<>(), 100.0, 200, 1.0);
                                 }
-                                listeDesEnclos.add(enclosDestination);
+                                gestionnaireEnclos.getListeDesEnclos().add(enclosDestination);
                             }
                             Enclos enclosSource = trouverEnclosParEspece(creatureTransferer.getNomEspece());
                             maitreZoo.transfererCreature(creatureTransferer, enclosSource, enclosDestination);
@@ -216,6 +226,48 @@ public class Menu {
                     }
                     break;
 
+                case 5:
+                    System.out.println("Dans quel enclos voulez-vous reproduire 2 créatures ?");
+                    afficherNomsEnclos();
+                    int numEnclos = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (numEnclos < 0 || numEnclos >= gestionnaireEnclos.getListeDesEnclos().size()) {
+                        System.out.println("Numéro d'enclos invalide.");
+                        break;
+                    }
+
+                    Enclos enclos = trouverEnclosParNumero(numEnclos);
+
+                    if (enclos.getCreatures().size() == 1) {
+                        System.out.println(
+                                "Il n'y a qu'une seule créature dans l'enclos, la reproduction n'est pas possible.");
+                        break;
+                    }
+
+                    afficherNomsCreaturesParEnclos(enclos);
+
+                    System.out.println("Entrez le nom de la première créature :");
+                    String nomCreature1 = scanner.nextLine();
+                    Creature creature1 = trouverCreatureParNom(nomCreature1);
+
+                    System.out.println("Entrez le nom de la deuxième créature :");
+                    String nomCreature2 = scanner.nextLine();
+                    Creature creature2 = trouverCreatureParNom(nomCreature2);
+
+                    if (creature1 == null || creature2 == null) {
+                        System.out.println("Une ou les deux créatures n'ont pas été trouvées.");
+                    } else if (creature1.getSexe() == creature2.getSexe()) {
+                        System.out.println("Les deux créatures sont du même sexe, elles ne peuvent pas se reproduire.");
+                    } else {
+                        if (creature1.getSexe() == 'F') {
+                            creature1.Reproduction(gestionnaireEnclos);
+                        } else {
+                            creature2.Reproduction(gestionnaireEnclos);
+                        }
+                    }
+                    break;
+
                 case 99:
                     System.out.println("Au revoir !");
                     break;
@@ -224,6 +276,10 @@ public class Menu {
                     System.out.println("Option non reconnue. Veuillez choisir une option valide.");
                     break;
             }
-        } while (choix != 5);
+        } while (choix != 99);
+    }
+
+    public void fermer() {
+        scanner.close();
     }
 }
