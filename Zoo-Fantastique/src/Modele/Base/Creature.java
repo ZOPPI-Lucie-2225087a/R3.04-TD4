@@ -88,10 +88,10 @@ public class Creature {
         if (Math.random() < vieilir()) {
             emettreSon(this.getNom() + " est mort de vieillesse");
         }
-        if (indicateurFaim <=0) {
+        if (indicateurFaim <= 0) {
             emettreSon(this.getNom() + " est mort de faim");
         }
-        if (poids > 350){
+        if (poids > 350) {
             emettreSon(this.getNom() + " est mOrt d'Obésité");
         }
     }
@@ -105,7 +105,8 @@ public class Creature {
         sb.append("Elle a ").append(age).append(age > 1 ? " ans" : " an").append(".\n");
         sb.append("Son indicateur de faim est à ").append(indicateurFaim).append(".\n");
         sb.append("Elle est ").append(dort ? "endormie" : "éveillée").append(".\n");
-        sb.append("Son indicateur de santé est à ").append(indicateurSante).append(".\n\n");
+        sb.append("Son indicateur de santé est à ").append(indicateurSante).append(".\n");
+        sb.append("Elle est ").append(getmalade() ? "malade" : "en bonne santé").append(".\n\n");
         return sb.toString();
     }
 

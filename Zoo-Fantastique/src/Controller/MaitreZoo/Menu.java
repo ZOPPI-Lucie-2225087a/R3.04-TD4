@@ -125,6 +125,27 @@ public class Menu {
         return null;
     }
 
+    public boolean existeCreatureMalade() {
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
+            for (Creature creature : enclos.getCreatures()) {
+                if (creature.getmalade()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void afficherNomsCreaturesMalades() {
+    for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
+        for (Creature creature : enclos.getCreatures()) {
+            if (creature.getmalade()) {
+                System.out.println("-" + creature.getNom());
+            }
+        }
+    }
+}
+    
     public void afficherMenu() {
         int choix;
 
@@ -134,6 +155,7 @@ public class Menu {
             System.out.println("3. Nourrir les créatures d'un enclos");
             System.out.println("4. Transférer une créature d'un enclos à un autre");
             System.out.println("5. Faire reproduire des créatures");
+            System.out.println("6. Soigner les créatures malades");
             System.out.println("99. Quitter");
             System.out.print("Choisissez une option : ");
             while (!scanner.hasNextInt()) {
@@ -146,7 +168,22 @@ public class Menu {
                 case 1:
                     System.out.print("Entrez le numéro de l'enclos à examiner parmi la liste suivante : \n");
                     afficherNomsEnclos();
-                    int numeroEnclosExaminer = scanner.nextInt();
+                    int numeroEnclosExaminer = -1;
+                    int attempts = 0;
+                    do {
+                        if (scanner.hasNextInt()) {
+                            numeroEnclosExaminer = scanner.nextInt();
+                            break;
+                        } else {
+                            System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                            scanner.next();
+                            attempts++;
+                        }
+                    } while (attempts < 3);
+                    if (attempts == 3) {
+                        System.out.println("Nombre maximum de tentatives atteint.");
+                        break;
+                    }
                     Enclos enclosExaminer = trouverEnclosParNumero(numeroEnclosExaminer);
                     if (enclosExaminer != null) {
                         maitreZoo.examinerEnclos(enclosExaminer, enclosExaminer.getHabitat());
@@ -159,11 +196,22 @@ public class Menu {
                 case 2:
                     if (afficherEnclosVidesEtSales()) {
                         System.out.print("Entrez le nom de l'enclos à nettoyer parmi la liste suivante : ");
-                        while (!scanner.hasNext()) {
-                            System.out.println("Ce n'est pas un nom valide. Essayez encore.");
-                            scanner.next();
+                        String nomEnclosNettoyer = "";
+                        attempts = 0;
+                        do {
+                            if (scanner.hasNext()) {
+                                nomEnclosNettoyer = scanner.next();
+                                break;
+                            } else {
+                                System.out.println("Ce n'est pas un nom valide. Essayez encore.");
+                                scanner.next();
+                                attempts++;
+                            }
+                        } while (attempts < 3);
+                        if (attempts == 3) {
+                            System.out.println("Nombre maximum de tentatives atteint.");
+                            break;
                         }
-                        String nomEnclosNettoyer = scanner.next();
                         Enclos enclosNettoyer = trouverEnclosParNom(nomEnclosNettoyer);
                         if (enclosNettoyer.getProprete() < 50.0) {
                             maitreZoo.nettoyerEnclos(enclosNettoyer);
@@ -179,8 +227,23 @@ public class Menu {
                     System.out.print(
                             "Entrez le numéro de l'enclos dont vous voulez nourrir les créatures parmis la liste suivante : ");
                     afficherNomsEnclos();
-                    int nomEnclosNourrir = scanner.nextInt();
-                    Enclos enclosNourrir = trouverEnclosParNumero(nomEnclosNourrir);
+                    int numeroEnclosNourrir = -1;
+                    attempts = 0;
+                    do {
+                        if (scanner.hasNextInt()) {
+                            numeroEnclosNourrir = scanner.nextInt();
+                            break;
+                        } else {
+                            System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                            scanner.next();
+                            attempts++;
+                        }
+                    } while (attempts < 3);
+                    if (attempts == 3) {
+                        System.out.println("Nombre maximum de tentatives atteint.");
+                        break;
+                    }
+                    Enclos enclosNourrir = trouverEnclosParNumero(numeroEnclosNourrir);
                     if (enclosNourrir != null) {
                         maitreZoo.nourrirCreatures(enclosNourrir);
                     } else {
@@ -191,13 +254,44 @@ public class Menu {
                 case 4:
                     System.out.print("Entrez le nom de la créature à transférer parmis la liste suivante : ");
                     afficherNomsCreatures();
-                    String nomCreatureTransferer = scanner.next();
+                    String nomCreatureTransferer = "";
+                    attempts = 0;
+                    do {
+                        if (scanner.hasNext()) {
+                            nomCreatureTransferer = scanner.next();
+                            break;
+                        } else {
+                            System.out.println("Ce n'est pas un nom valide. Essayez encore.");
+                            scanner.next();
+                            attempts++;
+                        }
+                    } while (attempts < 3);
+                    if (attempts == 3) {
+                        System.out.println("Nombre maximum de tentatives atteint.");
+                        break;
+                    }
                     Creature creatureTransferer = trouverCreatureParNom(nomCreatureTransferer);
                     if (creatureTransferer != null) {
                         List<String> enclosDisponibles = enclosDisponibles(creatureTransferer);
                         System.out.println("Enclos disponibles : " + enclosDisponibles);
                         System.out.print("Entrez le type de l'enclos de destination : ");
-                        String typeEnclosDestination = scanner.next();
+                        String typeEnclosDestination = "";
+                        attempts = 0;
+                        do {
+                            if (scanner.hasNext() && enclosDisponibles.contains(scanner.next())) {
+                                typeEnclosDestination = scanner.next();
+                                break;
+                            } else {
+                                System.out.println("Ce n'est pas un type d'enclos valide. Essayez encore.");
+                                scanner.next();
+                                attempts++;
+                            }
+                        } while (attempts < 3);
+                        if (attempts == 3) {
+                            System.out.println("Nombre maximum de tentatives atteint.");
+                            break;
+                        }
+
                         if (enclosDisponibles.contains(typeEnclosDestination)) {
                             String nomEnclos = typeEnclosDestination.toLowerCase() + creatureTransferer.getNomEspece();
                             Enclos enclosDestination = trouverEnclosParNom(nomEnclos);
@@ -229,11 +323,26 @@ public class Menu {
                 case 5:
                     System.out.println("Dans quel enclos voulez-vous reproduire 2 créatures ?");
                     afficherNomsEnclos();
-                    int numEnclos = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if (numEnclos < 0 || numEnclos >= gestionnaireEnclos.getListeDesEnclos().size()) {
-                        System.out.println("Numéro d'enclos invalide.");
+                    int numEnclos = -1;
+                    attempts = 0;
+                    do {
+                        if (scanner.hasNextInt()) {
+                            numEnclos = scanner.nextInt();
+                            scanner.nextLine();
+                            if (numEnclos >= 0 && numEnclos < gestionnaireEnclos.getListeDesEnclos().size()) {
+                                break;
+                            } else {
+                                System.out.println("Numéro d'enclos invalide. Essayez encore.");
+                                attempts++;
+                            }
+                        } else {
+                            System.out.println("Ce n'est pas un numéro valide. Essayez encore.");
+                            scanner.next();
+                            attempts++;
+                        }
+                    } while (attempts < 3);
+                    if (attempts == 3) {
+                        System.out.println("Nombre maximum de tentatives atteint.");
                         break;
                     }
 
@@ -265,6 +374,38 @@ public class Menu {
                         } else {
                             creature2.Reproduction(gestionnaireEnclos);
                         }
+                    }
+                    break;
+
+                case 6:
+                    boolean creatureMaladeExist = existeCreatureMalade();
+                    if (creatureMaladeExist) {
+                        System.out.print("Entrez le nom de la créature à soigner parmi la liste suivante : ");
+                        afficherNomsCreaturesMalades();
+                        String nomCreatureSoigner = "";
+                        attempts = 0;
+                        do {
+                            if (scanner.hasNext()) {
+                                nomCreatureSoigner = scanner.next();
+                                break;
+                            } else {
+                                System.out.println("Ce n'est pas un nom valide. Essayez encore.");
+                                scanner.next();
+                                attempts++;
+                            }
+                        } while (attempts < 3);
+                        if (attempts == 3) {
+                            System.out.println("Nombre maximum de tentatives atteint.");
+                            break;
+                        }
+                        Creature creatureSoigner = trouverCreatureParNom(nomCreatureSoigner);
+                        if (creatureSoigner != null && creatureSoigner.getmalade()) {
+                            maitreZoo.soignerCreature(creatureSoigner);
+                        } else {
+                            System.out.println("Aucune créature malade trouvée avec ce nom.");
+                        }
+                    } else {
+                        System.out.println("Il n'y a pas de créatures malades à soigner.");
                     }
                     break;
 

@@ -95,7 +95,7 @@ public abstract class Enclos {
         sb.append(" a une superficie de ").append(superficie).append(" m² ");
         sb.append("et une capacité maximale de ").append(capaciteMax).append(" créatures\n");
         sb.append("L'enclos est propre à ").append(proprete).append("%\n");
-        sb.append("Il contient ").append(creatures.size()).append(" créature.s :\n");
+        sb.append("Il contient ").append(creatures.size()).append(" créature.s :\n\n");
         for (Creature creature : creatures) {
             sb.append(creature.toString());
         }

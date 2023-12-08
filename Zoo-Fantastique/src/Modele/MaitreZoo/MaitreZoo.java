@@ -52,6 +52,10 @@ public class MaitreZoo {
         enclos.entretenir();
     }
 
+    public void soignerCreature(Creature creature){
+        creature.etreSoigne();
+    }
+
     public void nourrirCreatures(Enclos enclos) {
         for (Creature creature : enclos.getCreatures()) {
             creature.manger();
