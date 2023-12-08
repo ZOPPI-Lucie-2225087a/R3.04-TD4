@@ -107,13 +107,19 @@ public class Lycanthrope {
         hurlement.hurler();
     }
 
-    public void hurlerCommunication() {
+    //exprime lappartenance (premier tiret)
+    public void hurlerCriMeute() {  //cest le cri de communication
         if (this.meute != null) {
             this.meute.repondreHurlementCommunication(this);
         } else {
-            System.out.println("Je ne suis pas membre de la meute");
+            String criPropre = meute.getCri();
+            System.out.println("Je ne suis pas membre d'une meute. Je hurle mon propre cri : " + criPropre);
         }
     }
+
+
+
+
 
     public void setRangDomination(RangDomination rangDomination) {
         this.rangDomination = rangDomination;
