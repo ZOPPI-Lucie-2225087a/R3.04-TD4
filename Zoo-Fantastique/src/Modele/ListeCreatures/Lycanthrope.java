@@ -39,16 +39,6 @@ public class Lycanthrope extends Vivipare implements CreatureTerrestre {
     }
 
     /**
-     * Permet au Lycanthrope de mettre bas. Cette méthode est actuellement non implémentée (retourne null).
-     *
-     * @return Toujours null dans la version actuelle.
-    */
-    @Override
-    public Creature mettreBas() {
-        return null;
-    }
-
-    /**
      * Permet au Lycanthrope de courir.
     */
     @Override
