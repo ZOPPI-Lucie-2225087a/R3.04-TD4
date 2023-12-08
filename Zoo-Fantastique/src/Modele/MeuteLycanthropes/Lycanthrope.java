@@ -102,9 +102,17 @@ public class Lycanthrope {
         return rand.nextInt(10) + 1;
     }
 
-    public void hurler() {
-        Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque cri marche
-        hurlement.hurler(hurlement);
+    public void hurler(Hurlement hurlement) {
+        System.out.print("Le lycanthrope " + nom + " hurle : ");
+        hurlement.hurler();
+    }
+
+    public void hurlerCommunication() {
+        if (this.meute != null) {
+            this.meute.repondreHurlementCommunication(this);
+        } else {
+            System.out.println("Je ne suis pas membre de la meute");
+        }
     }
 
     public void setRangDomination(RangDomination rangDomination) {

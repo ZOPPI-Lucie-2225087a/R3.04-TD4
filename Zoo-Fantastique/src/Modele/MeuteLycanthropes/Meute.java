@@ -64,6 +64,13 @@ public class Meute {
         return this.lycanthropes;
     }
 
+    public void repondreHurlementCommunication(Lycanthrope lycanthropeQuiHurle) {
+        for (Lycanthrope lycanthrope : lycanthropes) {
+            if (lycanthrope != lycanthropeQuiHurle) {
+                lycanthrope.hurler(Hurlement.COMMUNICATION);
+            }
+        }
+    }
 
     /**
      *
