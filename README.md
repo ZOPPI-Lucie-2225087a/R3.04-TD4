@@ -4,7 +4,7 @@
 
 Pour installer l'application, vous devez d'abord cloner le dépôt Git sur votre machine locale. Vous pouvez le faire en utilisant la commande suivante :
 ```bash
-git clone <url du dépôt>
+git clone <https://github.com/ZOPPI-Lucie-2225087a/Zoo-Fantastique.git>
 ```
 Ensuite, naviguez vers le répertoire du projet :
 ```bash
