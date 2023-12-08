@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import Base.Creature;
 import Base.Enclos;
+import Base.GestionnaireCreature;
 import Base.GestionnaireEnclos;
 import Base.SimulerCreature;
 import Base.SimulerEnclos;
@@ -19,17 +20,41 @@ import MaitreZoo.*;
 
 public class Main {
         public static void main(String[] args) {
-                Lycanthrope Graou = new Lycanthrope("Lycanthrope", "Graou", 'M', 15.0, 2.0, 5, 100, false, 100);
-                Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 2.0, 5, 100, false, 100);
-                Licorne Popcorne = new Licorne("Licorne", "Popcorne", 'F', 10.0, 2.0, 5, 100, false, 100);
-                Nymphe Muse = new Nymphe("Nymphe", "Muse", 'F', 8.0, 2.0, 5, 100, false, 100);
-                Kraken Kraquant = new Kraken("Kraken", "Kraquant", 'M', 20.0, 2.0, 5, 100, false, 100);
-                Sirène Ariel = new Sirène("Sirène", "Ariel", 'F', 12.0, 2.0, 5, 100, false, 100);
-                Mégalodon Megalo = new Mégalodon("Mégalodon", "Megalo", 'M', 25.0, 2.0, 5, 100, false, 100);
-                Phénix Lion_de_cendre = new Phénix("Phénix", "Lion_de_cendre", 'F', 10.0, 2.0, 5, 100, false, 100);
-                Dragon Dracaufeu = new Dragon("Dragon", "Dracaufeu", 'M', 30.0, 2.0, 5, 100, false, 100);
+                Lycanthrope Graou = new Lycanthrope("Lycanthrope", "Graou", 'M', 15.0, 200.0, 5, 100, false, 100);
+                Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 200.0, 5, 100, false, 100);
+                
+                Licorne Popcorne = new Licorne("Licorne", "Popcorne", 'F', 10.0, 200.0, 5, 100, false, 100);
+                Licorne Popcornos = new Licorne("Licorne", "Popcornos", 'M', 10.0, 200.0, 5, 100, false, 100);
+                
+                Nymphe Muse = new Nymphe("Nymphe", "Muse", 'F', 8.0, 200.0, 5, 100, false, 100);
+                Nymphe Muso = new Nymphe("Nymphe", "Muso", 'M', 8.0, 200.0, 5, 100, false, 100);
+                
+                Kraken Kraquant = new Kraken("Kraken", "Kraquant", 'M', 20.0, 200.0, 5, 100, false, 100);
+                Kraken Kraquante = new Kraken("Kraken", "Kraquante", 'F', 20.0, 200.0, 5, 100, false, 100);
+                
+                Sirène Ariel = new Sirène("Sirène", "Ariel", 'F', 12.0, 200.0, 5, 100, false, 100);
+                Sirène Arielo = new Sirène("Sirène", "Arielo", 'M', 12.0, 200.0, 5, 100, false, 100);
 
-                List<Creature> listeDesCreatures = new ArrayList<>();
+                Mégalodon Megalo = new Mégalodon("Mégalodon", "Megalo", 'M', 25.0, 200.0, 5, 100, false, 100);
+                Mégalodon Megala = new Mégalodon("Mégalodon", "Megala", 'F', 25.0, 200.0, 5, 100, false, 100);
+
+                Phénix Lion_de_cendre = new Phénix("Phénix", "Lion_de_cendre", 'M', 10.0, 200.0, 5, 100, false, 100);
+                Phénix Lionne_de_cendre = new Phénix("Phénix", "Lionne_de_cendre", 'F', 10.0, 200.0, 5, 100, false, 100);
+
+                Dragon Dracaufeu = new Dragon("Dragon", "Dracaufeu", 'M', 30.0, 200.0, 5, 100, false, 100);
+                Dragon Drattack = new Dragon("Dragon", "Drattack", 'F', 30.0, 200.0, 5, 100, false, 100);
+
+                GestionnaireCreature gestionnaireCreature = new GestionnaireCreature();
+                gestionnaireCreature.ajouterCreature(Graou);
+                gestionnaireCreature.ajouterCreature(Graounette);
+                gestionnaireCreature.ajouterCreature(Popcorne);
+                gestionnaireCreature.ajouterCreature(Muse);
+                gestionnaireCreature.ajouterCreature(Kraquant);
+                gestionnaireCreature.ajouterCreature(Ariel);
+                gestionnaireCreature.ajouterCreature(Megalo);
+                gestionnaireCreature.ajouterCreature(Lion_de_cendre);
+                gestionnaireCreature.ajouterCreature(Dracaufeu);
+
 
                 Standard enclosLicornes = new Standard("enclosStandardLicorne", 100, 10,
                                 new ArrayList<>(Arrays.asList(Popcorne)),
@@ -65,22 +90,18 @@ public class Main {
                 gestionnaireEnclos.ajouterEnclos(enclosPhenix);
                 gestionnaireEnclos.ajouterEnclos(enclosDragons);
 
-                for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
-                        listeDesCreatures.addAll(enclos.getCreatures());
-                }
-
                 MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
                 ZooFantastique zooFantastique = new ZooFantastique("Zoo Fantastique", maitreZoo, 50, gestionnaireEnclos);
-                demarrerSimulation(gestionnaireEnclos, listeDesCreatures);
+                demarrerSimulation(gestionnaireEnclos,gestionnaireCreature);
                 zooFantastique.gererZoo();
 
         }
 
-        public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos, List<Creature> listeDesCreatures) {
-                ScheduledExecutorService executor = Executors
-                                .newScheduledThreadPool(gestionnaireEnclos.getListeDesEnclos().size());
+        public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos, GestionnaireCreature gestionnaireCreature) {
+                ScheduledExecutorService executor = Executors.newScheduledThreadPool(gestionnaireCreature.getListeDesCreatures().size());
                 executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1,TimeUnit.SECONDS);
 
-                executor.scheduleAtFixedRate(new SimulerCreature(listeDesCreatures), 0, 1, TimeUnit.SECONDS);
+                executor.scheduleAtFixedRate(new SimulerCreature(gestionnaireCreature.getListeDesCreatures()), 0, 1, TimeUnit.SECONDS);
         }
 }
+

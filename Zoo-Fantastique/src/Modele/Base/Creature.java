@@ -76,7 +76,7 @@ public class Creature {
         dort = false;
     }
 
-    public double vieilir() {
+    public double vieillir() {
         mourir();
         age++;
 
@@ -85,7 +85,7 @@ public class Creature {
     }
 
     public void mourir() {
-        if (Math.random() < vieilir()) {
+        if (Math.random() < vieillir()) {
             emettreSon(this.getNom() + " est mort de vieillesse");
         }
         if (indicateurFaim <= 0) {
