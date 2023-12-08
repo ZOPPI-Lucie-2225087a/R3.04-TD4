@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import Base.Enclos;
+import Base.GestionnaireEnclos;
 import Base.SimulerEnclos;
 import Controller.MaitreZoo.Menu;
 import Habitat.*;
@@ -16,19 +17,21 @@ import MaitreZoo.*;
 public class Main {
         public static void main(String[] args) {
                 Lycanthrope Graou = new Lycanthrope("Lycanthrope", "Graou", 'M', 15.0, 2.0, 5, 100, false, 100);
+                Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 2.0, 5, 100, false,
+                                100);
                 Licorne Popcorne = new Licorne("Licorne", "Popcorne", 'F', 10.0, 2.0, 5, 100, false, 100);
                 Nymphe Muse = new Nymphe("Nymphe", "Muse", 'F', 8.0, 2.0, 5, 100, false, 100);
                 Kraken Kraquant = new Kraken("Kraken", "Kraquant", 'M', 20.0, 2.0, 5, 100, false, 100);
                 Sirène Ariel = new Sirène("Sirène", "Ariel", 'F', 12.0, 2.0, 5, 100, false, 100);
                 Mégalodon Megalo = new Mégalodon("Mégalodon", "Megalo", 'M', 25.0, 2.0, 5, 100, false, 100);
-                Phénix Lion_de_cendre = new Phénix("Phénix", "Lion_de_cendre", 'M', 10.0, 2.0, 5, 100, false, 100);
+                Phénix Lion_de_cendre = new Phénix("Phénix", "Lion_de_cendre", 'F', 10.0, 2.0, 5, 100, false, 100);
                 Dragon Dracaufeu = new Dragon("Dragon", "Dracaufeu", 'M', 30.0, 2.0, 5, 100, false, 100);
 
                 Standard enclosLicornes = new Standard("enclosStandardLicorne", 100, 10,
                                 new ArrayList<>(Arrays.asList(Popcorne)),
                                 100.0);
                 Standard enclosLycanthropes = new Standard("enclosStandardLycanthrope", 100, 10,
-                                new ArrayList<>(Arrays.asList(Graou)), 100.0);
+                                new ArrayList<>(Arrays.asList(Graou, Graounette)), 100.0);
                 Standard enclosNymphes = new Standard("enclosStandardNymphe", 100, 10,
                                 new ArrayList<>(Arrays.asList(Muse)),
                                 100.0);
@@ -48,26 +51,28 @@ public class Main {
                 Voliere enclosDragons = new Voliere("voliereDragon", 100, 10, new ArrayList<>(Arrays.asList(Dracaufeu)),
                                 100.0, 20);
 
-                List<Enclos> listeDesEnclos = new ArrayList<>();
-                listeDesEnclos.add(enclosLicornes);
-                listeDesEnclos.add(enclosLycanthropes);
-                listeDesEnclos.add(enclosNymphes);
-                listeDesEnclos.add(enclosKrakens);
-                listeDesEnclos.add(enclosSirenes);
-                listeDesEnclos.add(enclosMegalodons);
-                listeDesEnclos.add(enclosPhenix);
-                listeDesEnclos.add(enclosDragons);
+                GestionnaireEnclos gestionnaireEnclos = new GestionnaireEnclos(new ArrayList<>());
+                gestionnaireEnclos.ajouterEnclos(enclosLicornes);
+                gestionnaireEnclos.ajouterEnclos(enclosLycanthropes);
+                gestionnaireEnclos.ajouterEnclos(enclosNymphes);
+                gestionnaireEnclos.ajouterEnclos(enclosKrakens);
+                gestionnaireEnclos.ajouterEnclos(enclosSirenes);
+                gestionnaireEnclos.ajouterEnclos(enclosMegalodons);
+                gestionnaireEnclos.ajouterEnclos(enclosPhenix);
+                gestionnaireEnclos.ajouterEnclos(enclosDragons);
 
                 MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
-                Menu menu = new Menu(maitreZoo, listeDesEnclos);
-                demarrerSimulation(listeDesEnclos);
+
+                Menu menu = new Menu(maitreZoo, gestionnaireEnclos);
+                demarrerSimulation(gestionnaireEnclos);
                 menu.afficherMenu();
 
         }
 
-        public static void demarrerSimulation(List<Enclos> listeDesEnclos) {
-                ScheduledExecutorService executor = Executors.newScheduledThreadPool(listeDesEnclos.size());
-                for (Enclos enclos : listeDesEnclos) {
+        public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos) {
+                ScheduledExecutorService executor = Executors
+                                .newScheduledThreadPool(gestionnaireEnclos.getListeDesEnclos().size());
+                for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
                         executor.scheduleAtFixedRate(new SimulerEnclos(enclos), 0, 1, TimeUnit.SECONDS);
                 }
         }

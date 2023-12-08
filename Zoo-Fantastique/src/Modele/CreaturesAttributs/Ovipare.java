@@ -2,7 +2,10 @@ package CreaturesAttributs;
 
 import Base.Creature;
 import Base.Enclos;
+
+import java.util.Random;
 import java.util.Scanner;
+import Base.GestionnaireEnclos;
 
 /**
  * Classe Ovipare
@@ -47,32 +50,44 @@ public abstract class Ovipare extends Creature {
         super(nomEspece, nom, sexe, poids, taille, age, indicateurFaim, dort, indicateurSante);
     }
 
+    @Override
+    public Creature Reproduction(GestionnaireEnclos gestionnaireEnclos) {
+        return Pondre(gestionnaireEnclos);
+    }
+
     /**
      * Simule le processus de ponte d'une créature ovipare.
      *
      * @return Le nouveau-né issu du processus de ponte.
      */
-    public Creature Pondre() {
+    public Creature Pondre(GestionnaireEnclos gestionnaireEnclos) {
         if (this.getSexe() == 'F') {
             Scanner scanner = new Scanner(System.in);
-            System.out.println(this.getNomEspece() + " a pondu un nouvel oeuf. Comment voulez-vous nommer le bébé ?");
+
+            Random random = new Random();
+            char sexeBebe = random.nextBoolean() ? 'M' : 'F';
+            if (sexeBebe == 'M') {
+                System.out.println(this.getNomEspece()
+                        + " a pondu un nouvel oeuf et c'est un mâle. Comment voulez-vous nommer le bébé ?");
+            } else {
+                System.out.println(this.getNomEspece()
+                        + " a pondu un nouvel oeuf et c'est une femelle. Comment voulez-vous nommer le bébé ?");
+            }
             String nomBebe = scanner.nextLine();
-            Ovipare bebe = creerNouveau(this.getNomEspece(), 'M', this.getPoids(), this.getTaille(), 0, 100, false,
+
+            Ovipare bebe = creerNouveau(this.getNomEspece(), sexeBebe, this.getPoids(), this.getTaille(), 0, 100, false,
                     100);
             bebe.setNom(nomBebe);
             System.out.println("Le bébé s'appelle maintenant " + bebe.getNom());
 
-            // Trouver l'enclos de la créature parente
-            Enclos enclosParent = trouverEnclosDeCreature(this);
+            Enclos enclosParent = trouverEnclosDeCreature(this, gestionnaireEnclos);
             if (enclosParent != null) {
-                // Ajouter le bébé à l'enclos de la créature parente
+
                 enclosParent.ajouterCreature(bebe);
                 System.out.println("Le bébé a été ajouté à l'enclos de la créature parente.");
             } else {
                 System.out.println("Impossible de trouver l'enclos de la créature parente.");
             }
-
-            scanner.close();
             return bebe;
         } else {
             System.out.println("ne peut pas pondre car c'est un male.");
@@ -86,7 +101,16 @@ public abstract class Ovipare extends Creature {
      * @param ovipare La créature ovipare.
      * @return L'enclos de la créature parente, ou null s'il n'est pas trouvé.
      */
-    private Enclos trouverEnclosDeCreature(Ovipare ovipare) {// a faire 
+    private Enclos trouverEnclosDeCreature(Ovipare ovipare, GestionnaireEnclos gestionnaireEnclos) {
+        if (gestionnaireEnclos == null) {
+            System.out.println("gestionnaireEnclos est null");
+            return null;
+        }
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
+            if (enclos.getCreatures().contains(ovipare)) {
+                return enclos;
+            }
+        }
         return null;
     }
 }
