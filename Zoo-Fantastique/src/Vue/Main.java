@@ -12,6 +12,7 @@ import Base.Enclos;
 import Base.GestionnaireEnclos;
 import Base.SimulerCreature;
 import Base.SimulerEnclos;
+import Base.ZooFantastique;
 import Controller.MaitreZoo.Menu;
 import Habitat.*;
 import MaitreZoo.*;
@@ -70,10 +71,9 @@ public class Main {
                 }
 
                 MaitreZoo maitreZoo = new MaitreZoo("Léo Oger", 'M', 19);
-
-                Menu menu = new Menu(maitreZoo, gestionnaireEnclos);
+                ZooFantastique zooFantastique = new ZooFantastique("Zoo Fantastique", maitreZoo, 50, gestionnaireEnclos);
                 demarrerSimulation(gestionnaireEnclos, listeDesCreatures);
-                menu.afficherMenu();
+                zooFantastique.gererZoo();
 
         }
 
@@ -81,7 +81,8 @@ public class Main {
                 ScheduledExecutorService executor = Executors
                                 .newScheduledThreadPool(gestionnaireEnclos.getListeDesEnclos().size());
                 for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
-                        executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1, TimeUnit.SECONDS);
+                        executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1,
+                                        TimeUnit.SECONDS);
                 }
 
                 ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(listeDesCreatures.size());
