@@ -7,6 +7,12 @@ import MaitreZoo.MaitreZoo;
 
 import Base.ZooFantastique;
 
+/**
+ * La classe ZooFantastique représente un zoo fantastique qui peut être géré par
+ * un utilisateur (MaitreZoo).
+ * Elle permet d'afficher des informations sur les créatures et les enclos,
+ * ainsi que de gérer le zoo en utilisant un menu.
+ */
 public class ZooFantastique {
     private String nom;
     private MaitreZoo maitre;
@@ -15,7 +21,15 @@ public class ZooFantastique {
     private GestionnaireEnclos gestionnaireEnclos;
 
     private Menu menu;
-    
+
+    /**
+     * Constructeur de la classe ZooFantastique.
+     *
+     * @param nom                Le nom du zoo.
+     * @param maitre             Le MaitreZoo qui gère le zoo.
+     * @param maxEnclos          Le nombre maximal d'enclos dans le zoo.
+     * @param gestionnaireEnclos Le gestionnaire des enclos du zoo.
+     */
     public ZooFantastique(String nom, MaitreZoo maitre, int maxEnclos, GestionnaireEnclos gestionnaireEnclos) {
         this.nom = nom;
         this.maitre = maitre;
@@ -25,6 +39,9 @@ public class ZooFantastique {
         this.menu = new Menu(maitre, gestionnaireEnclos);
     }
 
+    /**
+     * Affiche le nombre total de créatures dans tous les enclos du zoo.
+     */
     public void afficherNombreCreatures() {
         int total = 0;
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
@@ -33,6 +50,9 @@ public class ZooFantastique {
         System.out.println("Nombre total de créatures : " + total);
     }
 
+    /**
+     * Affiche les créatures de tous les enclos du zoo.
+     */
     public void afficherCreaturesEnclos() {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             System.out.println("Enclos : " + enclos.getNom());
@@ -41,7 +61,10 @@ public class ZooFantastique {
             }
         }
     }
-    
+
+    /**
+     * Permet de gérer le zoo en affichant un menu interactif.
+     */
     public void gererZoo() {
         Scanner scanner = new Scanner(System.in);
         int choix;
