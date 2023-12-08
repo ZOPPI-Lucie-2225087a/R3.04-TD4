@@ -14,7 +14,18 @@ import Base.ZooFantastique;
 import Habitat.*;
 import MaitreZoo.*;
 
+/**
+ * La classe principale du programme qui initialise le zoo fantastique, les
+ * créatures et les enclos,
+ * et démarre la simulation du zoo.
+ */
 public class Main {
+        /**
+         * La méthode principale qui est appelée au lancement du programme.
+         *
+         * @param args Les arguments de la ligne de commande (non utilisés dans cette
+         *             application).
+         */
         public static void main(String[] args) {
                 Lycanthrope Graou = new Lycanthrope("Lycanthrope", "Graou", 'M', 15.0, 200.0, 5, 100, false, 100);
                 Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 200.0, 5, 100, false,
@@ -104,6 +115,13 @@ public class Main {
 
         }
 
+        /**
+         * Démarre la simulation du zoo en planifiant l'exécution des simulateurs
+         * d'enclos et de créatures.
+         *
+         * @param gestionnaireEnclos   Le gestionnaire d'enclos.
+         * @param gestionnaireCreature Le gestionnaire de créatures.
+         */
         public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos,
                         GestionnaireCreature gestionnaireCreature) {
                 ScheduledExecutorService executor = Executors
