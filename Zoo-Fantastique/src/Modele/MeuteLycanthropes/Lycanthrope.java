@@ -7,15 +7,11 @@ import MeuteLycanthropes.Meute;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static java.util.Collections.swap;
-
 
 public class Lycanthrope {
 
     private String nom;
-
-
 
     private char sexe;
     private String categorieAge;
@@ -26,29 +22,6 @@ public class Lycanthrope {
     private int facteurImpetuosite;
     private Meute meute;
 
-    public char getSexe() {
-        return sexe;
-    }
-
-    public String getCategorieAge() {
-        return categorieAge;
-    }
-
-    public int getForce() {
-        return force;
-    }
-
-    public int getDomination() {
-        return domination;
-    }
-
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public Meute getMeute() {
-        return meute;
-    }
     public Lycanthrope(String nom, char sexe, String categorieAge, RangDomination rangDomination) {
         this.nom = nom;
         this.sexe = sexe;
@@ -130,14 +103,14 @@ public class Lycanthrope {
     }
 
     public void hurler() {
-        Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque cri marche 
+        Hurlement hurlement = Hurlement.COMMUNICATION; // a changer pour que chaque cri marche
         hurlement.hurler(hurlement);
     }
 
     public void setRangDomination(RangDomination rangDomination) {
         this.rangDomination = rangDomination;
     }
-    
+
     public RangDomination getRangDomination() {
         return this.rangDomination;
     }
@@ -146,4 +119,27 @@ public class Lycanthrope {
         return this.nom;
     }
 
+    public char getSexe() {
+        return sexe;
+    }
+
+    public String getCategorieAge() {
+        return categorieAge;
+    }
+
+    public int getForce() {
+        return force;
+    }
+
+    public int getDomination() {
+        return domination;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public Meute getMeute() {
+        return meute;
+    }
 }
