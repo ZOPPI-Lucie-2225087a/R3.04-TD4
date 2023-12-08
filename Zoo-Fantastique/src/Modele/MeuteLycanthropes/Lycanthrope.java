@@ -116,9 +116,28 @@ public class Lycanthrope {
             System.out.println("Je ne suis pas membre d'une meute. Je hurle mon propre cri : " + criPropre);
         }
     }
+    /**
+    //deuxiemme tiret
+    public void hurlerDomination() {
+        // Vérifier si le rang de ce lycanthrope est inférieur à celui du lycanthrope qui a émis la domination
+        if (this.getRangDomination().ordinal() < autre.getRangDomination().ordinal()) {
+            hurlerSoumission(); // Appeler la méthode hurlerSoumission() pour exprimer la soumission
+        } else {
+            System.out.println("Le lycanthrope " + nom + " hurle pour exprimer sa domination.");
+        }
+    }
 
 
 
+    //troisieme + quatrieme tiret
+    public void hurlerSoumission(Lycanthrope autreLycanthrope) {
+        if (this.rangDomination.ordinal() > autreLycanthrope.getRangDomination().ordinal()) {
+            System.out.println("Le lycanthrope " + this.nom + " hurle pour exprimer sa soumission envers " + autreLycanthrope.getNom());
+        } else {
+            System.out.println("Le lycanthrope " + this.nom + " hurle d'agressivité envers " + autreLycanthrope.getNom());
+        }
+    }
+     **/
 
 
     public void setRangDomination(RangDomination rangDomination) {
