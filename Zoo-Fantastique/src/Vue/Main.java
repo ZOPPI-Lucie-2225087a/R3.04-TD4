@@ -107,11 +107,11 @@ public class Main {
         public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos,
                         GestionnaireCreature gestionnaireCreature) {
                 ScheduledExecutorService executor = Executors
-                                .newScheduledThreadPool(gestionnaireCreature.getListeDesCreatures().size()*100);
-                executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1,
+                                .newScheduledThreadPool(gestionnaireCreature.getListeDesCreatures().size());
+                executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 10,
                                 TimeUnit.SECONDS);
 
-                executor.scheduleAtFixedRate(new SimulerCreature(gestionnaireCreature.getListeDesCreatures()), 0, 1,
+                executor.scheduleAtFixedRate(new SimulerCreature(gestionnaireCreature.getListeDesCreatures()), 0, 10,
                                 TimeUnit.SECONDS);
         }
 }
