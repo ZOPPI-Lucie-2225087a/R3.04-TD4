@@ -11,23 +11,44 @@ import Habitat.*;
 import Interface.*;
 import MaitreZoo.MaitreZoo;
 
+/**
+ * La classe Menu représente le menu interactif du Maître de Zoo, offrant des
+ * options
+ * pour examiner, nettoyer, nourrir, transférer, reproduire et soigner les
+ * créatures du zoo.
+ */
 public class Menu {
     private MaitreZoo maitreZoo;
     private Scanner scanner;
     private GestionnaireEnclos gestionnaireEnclos;
 
+    /**
+     * Constructeur de la classe Menu.
+     *
+     * @param maitreZoo          L'instance du Maître de Zoo associée au menu.
+     * @param gestionnaireEnclos Le gestionnaire d'enclos utilisé pour gérer les
+     *                           enclos du zoo.
+     */
     public Menu(MaitreZoo maitreZoo, GestionnaireEnclos gestionnaireEnclos) {
         this.maitreZoo = maitreZoo;
         this.scanner = new Scanner(System.in);
         this.gestionnaireEnclos = gestionnaireEnclos;
     }
 
+    /**
+     * Affiche les noms des enclos disponibles.
+     */
     public void afficherNomsEnclos() {
         for (int i = 0; i < gestionnaireEnclos.getListeDesEnclos().size(); i++) {
             System.out.println((i + 1) + ". " + gestionnaireEnclos.getListeDesEnclos().get(i).getNom());
         }
     }
 
+    /**
+     * Affiche les enclos vides et sales qui nécessitent un nettoyage.
+     *
+     * @return True si des enclos nécessitent un nettoyage, sinon False.
+     */
     public boolean afficherEnclosVidesEtSales() {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             if (enclos.getNombreCreatures() == 0 && enclos.getProprete() < 50) {
@@ -38,10 +59,19 @@ public class Menu {
         return false;
     }
 
+    /**
+     * Retourne l'enclos correspondant au numéro spécifié.
+     *
+     * @param numero Le numéro de l'enclos à rechercher.
+     * @return L'enclos correspondant au numéro, ou null s'il n'est pas trouvé.
+     */
     public Enclos trouverEnclosParNumero(int numero) {
         return gestionnaireEnclos.getListeDesEnclos().get(numero - 1);
     }
 
+    /**
+     * Affiche les noms des créatures disponibles dans tous les enclos du zoo.
+     */
     public void afficherNomsCreatures() {
         System.out.print("Créatures disponibles : \n");
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
@@ -51,6 +81,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Affiche les noms des créatures disponibles dans un enclos spécifié.
+     *
+     * @param enclos L'enclos pour lequel afficher les noms des créatures.
+     */
     public void afficherNomsCreaturesParEnclos(Enclos enclos) {
         System.out.print("Créatures disponibles : \n");
         for (Creature creature : enclos.getCreatures()) {
@@ -58,6 +93,12 @@ public class Menu {
         }
     }
 
+    /**
+     * Retourne l'enclos correspondant au nom spécifié (ignorant la casse).
+     *
+     * @param nomEnclos Le nom de l'enclos à rechercher.
+     * @return L'enclos correspondant au nom, ou null s'il n'est pas trouvé.
+     */
     private Enclos trouverEnclosParNom(String nomEnclos) {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             if (enclos.getNom().toLowerCase().equals(nomEnclos.toLowerCase())) {
@@ -67,6 +108,12 @@ public class Menu {
         return null;
     }
 
+    /**
+     * Retourne la créature correspondant au nom spécifié (ignorant la casse).
+     *
+     * @param nomCreature Le nom de la créature à rechercher.
+     * @return La créature correspondant au nom, ou null si elle n'est pas trouvée.
+     */
     public Creature trouverCreatureParNom(String nomCreature) {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
@@ -78,6 +125,14 @@ public class Menu {
         return null;
     }
 
+    /**
+     * Retourne l'enclos contenant une créature de l'espèce spécifiée (ignorant la
+     * casse).
+     *
+     * @param espece Le nom de l'espèce de la créature recherchée.
+     * @return L'enclos contenant une créature de l'espèce, ou null s'il n'est pas
+     *         trouvé.
+     */
     public Enclos trouverEnclosParEspece(String espece) {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
@@ -89,6 +144,13 @@ public class Menu {
         return null;
     }
 
+    /**
+     * Vérifie si une créature peut être transférée vers un certain type d'enclos.
+     *
+     * @param creature La créature à transférer.
+     * @param enclos   L'enclos de destination.
+     * @return True si la créature peut être transférée, sinon False.
+     */
     public boolean peutEtreTransfere(Creature creature, Enclos enclos) {
         if (creature instanceof CreatureVolante && enclos instanceof Voliere) {
             return true;
@@ -102,6 +164,13 @@ public class Menu {
         return false;
     }
 
+    /**
+     * Retourne la liste des types d'enclos disponibles pour une certaine créature.
+     *
+     * @param creature La créature pour laquelle obtenir les types d'enclos
+     *                 disponibles.
+     * @return La liste des types d'enclos disponibles.
+     */
     public List<String> enclosDisponibles(Creature creature) {
         List<String> enclos = new ArrayList<>();
         if (creature instanceof CreatureVolante) {
@@ -116,6 +185,15 @@ public class Menu {
         return enclos;
     }
 
+    /**
+     * Retourne l'enclos contenant une créature de l'espèce spécifiée et du type
+     * spécifié.
+     *
+     * @param espece Le nom de l'espèce de la créature recherchée.
+     * @param type   Le type d'enclos recherché.
+     * @return L'enclos contenant une créature de l'espèce et du type, ou null s'il
+     *         n'est pas trouvé.
+     */
     public Enclos trouverEnclosParEspeceEtType(String espece, String type) {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             if (enclos.getNom().equals(espece) && enclos.getClass().getSimpleName().equals(type)) {
@@ -125,6 +203,11 @@ public class Menu {
         return null;
     }
 
+    /**
+     * Vérifie l'existence d'au moins une créature malade dans le zoo.
+     *
+     * @return True s'il existe une créature malade, sinon False.
+     */
     public boolean existeCreatureMalade() {
         for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
             for (Creature creature : enclos.getCreatures()) {
@@ -136,16 +219,23 @@ public class Menu {
         return false;
     }
 
+    /**
+     * Affiche les noms des créatures malades dans le zoo.
+     */
     public void afficherNomsCreaturesMalades() {
-    for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
-        for (Creature creature : enclos.getCreatures()) {
-            if (creature.getmalade()) {
-                System.out.println("-" + creature.getNom());
+        for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
+            for (Creature creature : enclos.getCreatures()) {
+                if (creature.getmalade()) {
+                    System.out.println("-" + creature.getNom());
+                }
             }
         }
     }
-}
-    
+
+    /**
+     * Affiche le menu principal et permet à l'utilisateur d'interagir avec le
+     * programme.
+     */
     public void afficherMenu() {
         int choix;
 
@@ -420,6 +510,9 @@ public class Menu {
         } while (choix != 99);
     }
 
+    /**
+     * Ferme le scanner utilisé pour les entrées utilisateur.
+     */
     public void fermer() {
         scanner.close();
     }
