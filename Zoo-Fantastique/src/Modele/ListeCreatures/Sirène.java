@@ -39,16 +39,6 @@ public class Sirène extends Vivipare implements CreatureMarine {
     }
 
     /**
-     * Permet à la Sirène de mettre bas. Cette méthode est actuellement non implémentée (retourne null).
-     *
-     * @return Toujours null dans la version actuelle.
-     */
-    @Override
-    public Creature mettreBas() {
-        return null;
-    }
-
-    /**
      * Permet à la Sirène de nager.
      */
     @Override
