@@ -3,8 +3,10 @@ package MeuteLycanthropes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import MeuteLycanthropes.Meute;
 
 public class Meute {
+    
     private ArrayList<Lycanthrope> lycanthropes;
     private String cri;
 
@@ -63,19 +65,22 @@ public class Meute {
     public ArrayList<Lycanthrope> getLycanthropes() {
         return this.lycanthropes;
     }
+/* 
+    public void verifierChangementFemelleAlpha() {
+        if (!femelles.contains(femelleAlpha)) {
+            dechuFemelleAlpha(femelleAlpha);
+            femelleAlpha = trouverNouvelleFemelleAlpha();
+        }
+    }
 
-
-    /**
-     *
-     *
-     * public void ajouterFemelle(Lycanthrope nouvelleFemelle) {
-     *     this.femelles.add(nouvelleFemelle);
-     *     verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après l'ajout
-     * }
-     *
-     * public void supprimerFemelle(Lycanthrope femelleASupprimer) {
-     *     this.femelles.remove(femelleASupprimer);
-     *     verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après la suppression
-     * }
-     */
+    public void ajouterFemelle(Lycanthrope nouvelleFemelle) {
+        this.femelles.add(nouvelleFemelle);
+        verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après l'ajout
+    }
+    
+    public void supprimerFemelle(Lycanthrope femelleASupprimer) {
+        this.femelles.remove(femelleASupprimer);
+        verifierChangementFemelleAlpha(); // Appel de la méthode pour vérifier la femelle alpha après la suppression
+    }
+*/
 }
