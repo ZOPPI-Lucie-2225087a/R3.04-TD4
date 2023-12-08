@@ -68,10 +68,10 @@ public abstract class Vivipare extends Creature {
             char sexeBebe = random.nextBoolean() ? 'M' : 'F';
             if (sexeBebe == 'M') {
                 System.out.println(this.getNomEspece()
-                        + " a pondu un nouvel oeuf et c'est un mâle. Comment voulez-vous nommer le bébé ?");
+                        + " a mis bas un mâle. Comment voulez-vous nommer le bébé ?");
             } else {
                 System.out.println(this.getNomEspece()
-                        + " a pondu un nouvel oeuf et c'est une femelle. Comment voulez-vous nommer le bébé ?");
+                        + " a mis bas une femelle. Comment voulez-vous nommer le bébé ?");
             }
             String nomBebe = scanner.nextLine();
 
@@ -91,7 +91,7 @@ public abstract class Vivipare extends Creature {
             }
             return bebe;
         } else {
-            System.out.println("ne peut pas pondre car c'est un mâle.");
+            System.out.println("ne peut pas mettre bas car c'est un mâle.");
             return null;
         }
     }
