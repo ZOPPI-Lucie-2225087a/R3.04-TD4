@@ -20,8 +20,7 @@ import MaitreZoo.*;
 public class Main {
         public static void main(String[] args) {
                 Lycanthrope Graou = new Lycanthrope("Lycanthrope", "Graou", 'M', 15.0, 2.0, 5, 100, false, 100);
-                Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 2.0, 5, 100, false,
-                                100);
+                Lycanthrope Graounette = new Lycanthrope("Lycanthrope", "Graounette", 'F', 15.0, 2.0, 5, 100, false, 100);
                 Licorne Popcorne = new Licorne("Licorne", "Popcorne", 'F', 10.0, 2.0, 5, 100, false, 100);
                 Nymphe Muse = new Nymphe("Nymphe", "Muse", 'F', 8.0, 2.0, 5, 100, false, 100);
                 Kraken Kraquant = new Kraken("Kraken", "Kraquant", 'M', 20.0, 2.0, 5, 100, false, 100);
@@ -80,13 +79,8 @@ public class Main {
         public static void demarrerSimulation(GestionnaireEnclos gestionnaireEnclos, List<Creature> listeDesCreatures) {
                 ScheduledExecutorService executor = Executors
                                 .newScheduledThreadPool(gestionnaireEnclos.getListeDesEnclos().size());
-                for (Enclos enclos : gestionnaireEnclos.getListeDesEnclos()) {
-                        executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1,
-                                        TimeUnit.SECONDS);
-                }
+                executor.scheduleAtFixedRate(new SimulerEnclos(gestionnaireEnclos.getListeDesEnclos()), 0, 1,TimeUnit.SECONDS);
 
-                for (Creature creature : listeDesCreatures) {
-                        executor.scheduleAtFixedRate(new SimulerCreature(creature), 0, 1, TimeUnit.SECONDS);
-                }
+                executor.scheduleAtFixedRate(new SimulerCreature(listeDesCreatures), 0, 1, TimeUnit.SECONDS);
         }
 }
