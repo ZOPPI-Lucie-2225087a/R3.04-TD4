@@ -1,21 +1,24 @@
 package Base;
 
+import java.util.List;
 import java.util.Random;
 import Habitat.Aquarium;
 import Habitat.Voliere;
 
 public class SimulerEnclos implements Runnable {
 
-    private Enclos enclos;
+    private List<Enclos> enclosList;
     private Random random = new Random();
 
-    public SimulerEnclos(Enclos enclos) {
-        this.enclos = enclos;
+    public SimulerEnclos(List<Enclos> enclosList) {
+        this.enclosList = enclosList;
     }
 
     @Override
     public void run() {
-        modifierEtatAleatoire(enclos);
+        for (Enclos enclos : enclosList) {
+            modifierEtatAleatoire(enclos);
+        }
     }
 
     private void modifierEtatAleatoire(Enclos enclos) {
