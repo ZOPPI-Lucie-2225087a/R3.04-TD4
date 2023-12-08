@@ -53,7 +53,6 @@ public class Creature {
      * si elle n'est pas en train de dormir.
      */
     public void manger() {
-        mourir();
         if (!dort) {
             indicateurFaim += 30;
             if (indicateurFaim > 100) {
@@ -100,7 +99,6 @@ public class Creature {
      * @param quantite La quantité de diminution de la santé.
      */
     public void diminuerSante(int quantite) {
-        mourir();
         indicateurSante -= quantite;
         if (indicateurSante <= 0) {
         }
@@ -127,7 +125,6 @@ public class Creature {
      * @return La probabilité de mourir de la créature.
      */
     public double vieillir() {
-        mourir();
         age++;
 
         double probaMourir = A * Math.exp(B * age);
